@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design token EasyTax
+   Primary  : deep blue navy
+   Secondary: yellow (gold)
+   Sumber nilai: port dari easytax-demo v1, sudah di-resolve dari 7+ lapis
+   override yang saling bertabrakan -> nilai efektif terakhir saja.
+   ========================================================================== */
+
+@theme {
+  /* --- Primary: Navy ---
+     Satu acuan: deep blue navy #0a1628 (dipakai v1 sebagai latar hero).
+     Semua token navy lain hanyalah terang/gelap dari hue yang sama, supaya
+     tidak ada lagi "navy" berbeda-bedanya di teks, tombol, ikon, dan kartu. */
+  --color-navy-900: #0a1628;
+  --color-navy-950: #060d18;
+  --color-navy-800: #1b2c4d;
+  --color-navy-700: #2c4470;
+  --color-navy-600: #3d5c94;
+  --color-navy-100: #eef1f9;
+
+  /* Alias latar hero = warna dasar yang sama, dipertahankan supaya
+     gradasi overlay foto dan pemakaian class tidak perlu diubah. */
+  --color-navy-hero: #0a1628;
+
+  /* --- Secondary: Yellow / Gold ---
+     #f4c922 = sampel piksel dari logo. Shade terang/dark diturunkan dari nilai ini. */
+  --color-yellow-500: #f4c922;
+  --color-yellow-300: #ffe58a;
+  --color-yellow-400: #fbd743;
+  --color-yellow-600: #d4ab12;
+  --color-yellow-light: #fefbe9;
+
+  /* --- Aksen pendukung --- */
+  --color-teal-accent: #00b4d8;
+  --color-emerald-accent: #10b981;
+  --color-red-accent: #ef4444;
+
+  /* --- Netral --- */
+  --color-netral-putih: #ffffff;
+  --color-netral-lat: #f4f7fb;
+  --color-netral-alt: #ebf2fe;
+  --color-garis: #e2e8f0;
+  --color-garis-halus: #edf2f7;
+
+  /* --- Teks --- */
+  --color-teks-utama: #0a1628;
+  --color-teks-gelap: #0a1628;
+  --color-teks-sekunder: #475569;
+  --color-teks-redup: #64748b;
+  --color-teks-terang: #cbd5e1;
+  --color-teks-putih: #ffffff;
+
+  /* --- Tipografi --- */
+  --font-heading: var(--font-outfit), "Outfit", sans-serif;
+  --font-body: var(--font-jakarta), "Plus Jakarta Sans", sans-serif;
+
+  /* --- Radius --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  /* --- Shadow --- */
+  --shadow-sm: 0 2px 4px rgb(10 22 40 / 0.04);
+  --shadow-md: 0 4px 20px -2px rgb(10 22 40 / 0.08);
+  --shadow-lg: 0 12px 32px -4px rgb(10 22 40 / 0.12);
+  --shadow-xl: 0 24px 48px -12px rgb(10 22 40 / 0.18);
+  --shadow-kuning: 0 8px 24px rgb(244 201 34 / 0.4);
+
+  /* --- Transisi --- */
+  --transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* --- Lebar container --- */
+  --container-maks: 1200px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-netral-putih);
+    color: var(--color-teks-utama);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Fokus keyboard hanya tampil saat navigasi via keyboard, supaya tidak
+     ada outline biru default yang merusak desain di klik mouse. */
+  :focus-visible {
+    outline: 2px solid var(--color-yellow-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-yellow-500);
+    color: var(--color-navy-900);
+  }
+}
+
+@layer utilities {
+  /* Marquee untuk ClientsMarquee. Animasi dimatikan otomatis saat pengguna
+     memilih reduce-motion, dan dual animation di-reverse supaya loop-nya
+     tidak "lompat" di detik ke-0. */
+  .animasi-marquee {
+    animation: geser-marquee 40s linear infinite;
+  }
+
+  .animasi-marquee-terbalik {
+    animation: geser-marquee 40s linear infinite reverse;
+  }
+
+  .animasi-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Marquee vertikal untuk section Testimoni: daftar kartu bergerak ke atas
+     atau ke bawah. Isi kolom digandakan dua kali supaya translateY(50%)
+     menyambung kembali ke awal tanpa lompatan. */
+  .animasi-marquee-atas {
+    animation: geser-marquee-atas 42s linear infinite;
+  }
+
+  .animasi-marquee-bawah {
+    animation: geser-marquee-bawah 42s linear infinite;
+  }
+
+  .animasi-marquee-atas:hover,
+  .animasi-marquee-bawah:hover {
+    animation-play-state: paused;
+  }
+
+  /* Badge informasi melayang di hero artikel — meniru
+     `article-badge-float` easytax-demo. */
+  .animasi-layang {
+    animation: badge-layang 4s ease-in-out infinite;
+  }
+
+  /* Tautan navigasi: garis bawah kuning yang melebar saat hover atau
+     ketika menu sedang aktif — meniru `.nav-link` easytax-demo. */
+  .tautan-nav {
+    position: relative;
+    padding-block: 6px;
+  }
+
+  .tautan-nav::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--color-yellow-500);
+    transition: var(--transition-base);
+  }
+
+  .tautan-nav:hover::after,
+  .tautan-nav[aria-current="page"]::after {
+    width: 100%;
+  }
+}
+
+@keyframes geser-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes badge-layang {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes geser-marquee-atas {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes geser-marquee-bawah {
+  from {
+    transform: translateY(-50%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animasi-marquee,
+  .animasi-marquee-terbalik,
+  .animasi-marquee-atas,
+  .animasi-marquee-bawah,
+  .animasi-layang {
+    animation: none;
+  }
+}

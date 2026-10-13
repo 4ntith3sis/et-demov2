@@ -1,0 +1,104 @@
+import { Centang } from "@/components/ikon";
+import { Tombol } from "@/components/ui/Tombol";
+import type { PaketLayanan } from "@/data/layanan-detail";
+import { situs } from "@/data/situs";
+
+/** Kartu paket — meniru `.service-package` easytax-demo. */
+function KartuPaket({ paket }: { paket: PaketLayanan }) {
+  return (
+    <article className="flex min-h-full flex-col rounded-[20px] border border-garis bg-white p-6 shadow-sm">
+      <h3 className="font-heading text-[1.3rem] font-black text-navy-900">
+        {paket.nama}
+      </h3>
+
+      {paket.deskripsi && (
+        <p className="mt-2 min-h-[45px] text-[0.9rem] leading-[1.6] text-teks-redup">
+          {paket.deskripsi}
+        </p>
+      )}
+
+      <strong className="my-[18px] block font-heading text-[1.5rem] font-black text-navy-900">
+        {paket.harga}
+        {paket.satuan && (
+          <span className="ml-1 text-[0.85rem] font-bold text-teks-redup">
+            {paket.satuan}
+          </span>
+        )}
+      </strong>
+
+      {paket.fitur.length > 0 && (
+        <>
+          <h4 className="mb-2.5 font-heading text-[0.95rem] font-extrabold text-navy-900">
+            Keunggulan
+          </h4>
+          <ul className="mb-6 flex flex-1 flex-col gap-2.5">
+            {paket.fitur.map((fitur) => (
+              <li
+                key={fitur}
+                className="flex items-start gap-2 text-[0.88rem] text-navy-900"
+              >
+                <Centang className="mt-0.75 h-4 w-4 shrink-0 text-emerald-accent" />
+                {fitur}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      <Tombol
+        href={situs.whatsappUrl}
+        external
+        ukuran="sedang"
+        className="mt-auto w-fit rounded-md py-[13px] px-7 text-[0.95rem]"
+      >
+        Konsultasi
+      </Tombol>
+    </article>
+  );
+}
+
+/**
+ * "Harga Transparan / Paket Layanan" — diport dari `PricingPackages`
+ * easytax-demo: judul terpusat lalu deretan kartu paket fleksibel.
+ */
+export function HargaLayanan({ paket }: { paket: PaketLayanan[] }) {
+  if (paket.length === 0) return null;
+
+  return (
+    <section
+      id="harga"
+      aria-labelledby="harga-judul"
+      className="bg-white py-20"
+    >
+      <div className="mx-auto w-full max-w-maks px-6 md:px-8">
+        <div className="mx-auto mb-10 max-w-[680px] text-center">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+            Harga Transparan
+          </span>
+
+          <h2
+            id="harga-judul"
+            className="mb-3.5 font-heading text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.25] font-bold text-navy-900"
+          >
+            Paket Layanan
+          </h2>
+
+          <p className="text-[1.05rem] text-teks-sekunder">
+            Pilih paket yang sesuai kebutuhan bisnis Anda.
+          </p>
+        </div>
+
+        <ul className="flex flex-wrap justify-center gap-6">
+          {paket.map((p) => (
+            <li
+              key={p.nama}
+              className="w-full max-w-[400px] flex-[1_1_300px]"
+            >
+              <KartuPaket paket={p} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
