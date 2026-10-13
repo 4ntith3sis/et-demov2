@@ -1,14 +1,8 @@
 import Link from "next/link";
 
-import { Email, Instagram, Lokasi, TikTok, WhatsApp } from "@/components/ikon";
+import { Email, Instagram, Jam, Lokasi, TikTok, WhatsApp } from "@/components/ikon";
+import { jamOperasional } from "@/data/kontak";
 import { menuNavigasi, situs } from "@/data/situs";
-
-const TAUTAN_LAYANAN = [
-  { label: "Laporan Perpajakan & Keuangan", href: "/layanan/laporan-perpajakan-keuangan" },
-  { label: "Laporan SPT", href: "/layanan/laporan-spt" },
-  { label: "Layanan Pengurusan PKP", href: "/layanan/pengurusan-pkp" },
-  { label: "Restitusi Pajak", href: "/layanan/restitusi-pajak" },
-];
 
 /* Tahun ditulis statis: `new Date()` tidak stabil saat prerender. */
 const TAHUN = 2026;
@@ -24,15 +18,15 @@ const SOSMED = [
 ];
 
 /**
- * Footer situs: identitas + deskripsi + sosmed, tiga kolom tautan, lalu
- * baris bawah berisi hak cipta. Struktur mengikuti easytax-demo dengan
- * warna navy yang sudah diseragamkan di globals.css.
+ * Footer situs: identitas + deskripsi + sosmed, lalu kolom Perusahaan, Jam
+ * Kantor (dari data kontak), dan Hubungi Kami, serta baris hak cipta.
+ * Warna navy diseragamkan lewat globals.css.
  */
 export function Footer() {
   return (
     <footer className="border-t border-white/8 bg-navy-hero text-teks-terang">
       <div className="mx-auto w-full max-w-maks px-6 pt-[clamp(44px,6vw,80px)] pb-8 md:px-8">
-        <div className="grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:gap-10">
+        <div className="grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_0.95fr_1.1fr] lg:gap-12">
           {/* Identitas */}
           <div>
             {/* Brand — sama seperti v1, footer memakai wordmark teks saja
@@ -73,28 +67,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Layanan */}
-          <nav aria-labelledby="footer-layanan">
-            <h4
-              id="footer-layanan"
-              className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-400"
-            >
-              Layanan Kami
-            </h4>
-            <ul className="mt-5 space-y-3">
-              {TAUTAN_LAYANAN.map((tautan) => (
-                <li key={tautan.href}>
-                  <Link
-                    href={tautan.href}
-                    className="text-[0.92rem] text-teks-terang no-underline transition-[var(--transition-base)] hover:translate-x-1 hover:text-yellow-400"
-                  >
-                    {tautan.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
           {/* Perusahaan */}
           <nav aria-labelledby="footer-perusahaan">
             <h4
@@ -119,6 +91,24 @@ export function Footer() {
                 ))}
             </ul>
           </nav>
+
+          {/* Jam operasional */}
+          <div>
+            <h4 className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-400">
+              Jam Kantor
+            </h4>
+            <ul className="mt-5 space-y-3.5">
+              {jamOperasional.map((item) => (
+                <li key={item.hari} className="flex items-start gap-2.5 text-[0.92rem]">
+                  <Jam className="mt-0.75 h-4 w-4 shrink-0 text-yellow-400" />
+                  <span>
+                    <span className="block font-bold text-white">{item.hari}</span>
+                    <span className="text-teks-terang">{item.jam}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Kontak */}
           <div>
@@ -154,12 +144,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-white/8 pt-6 text-[0.85rem]">
+        <div className="border-t border-white/8 pt-6 text-[0.85rem]">
           <p className="text-teks-redup">
             &copy; {TAHUN} {situs.nama}. All Rights Reserved.
-          </p>
-          <p className="text-teks-redup">
-            Part of <span className="font-bold text-teks-terang">easylegal</span>
           </p>
         </div>
       </div>

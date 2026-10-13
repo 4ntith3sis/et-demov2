@@ -64,25 +64,27 @@ export function DaftarArtikel({
             action="/tulisan-pajak"
             method="get"
             role="search"
-            className="relative"
+            className="flex flex-wrap items-center gap-3"
           >
             {kategoriAktif && (
               <input type="hidden" name="kategori" value={kategoriAktif} />
             )}
-            <Cari
-              aria-hidden="true"
-              className="pointer-events-none absolute top-1/2 left-[18px] h-4 w-4 -translate-y-1/2 text-[#94a3b8]"
-            />
-            <input
-              type="search"
-              name="q"
-              defaultValue={kueri}
-              placeholder="Cari artikel perpajakan, akuntansi, atau keuangan bisnis..."
-              className="h-[52px] w-full rounded-full border-[1.5px] border-garis bg-white pr-[104px] pl-11 text-[0.95rem] text-navy-900 outline-none transition-[var(--transition-base)] placeholder:text-teks-terang focus:border-navy-900"
-            />
+            <div className="relative w-full min-w-0 sm:w-auto sm:flex-1">
+              <Cari
+                aria-hidden="true"
+                className="pointer-events-none absolute top-1/2 left-[18px] h-4 w-4 -translate-y-1/2 text-[#94a3b8]"
+              />
+              <input
+                type="search"
+                name="q"
+                defaultValue={kueri}
+                placeholder="Cari artikel perpajakan, akuntansi, atau keuangan bisnis..."
+                className="h-[52px] w-full rounded-full border-[1.5px] border-garis bg-white pr-5 pl-11 text-[0.95rem] text-navy-900 outline-none transition-[var(--transition-base)] placeholder:text-teks-terang focus:border-navy-900"
+              />
+            </div>
             <button
               type="submit"
-              className="absolute top-1/2 right-1.5 -translate-y-1/2 cursor-pointer rounded-md bg-yellow-500 py-[13px] pr-7 pl-6 text-[0.95rem] font-bold text-navy-900 shadow-kuning transition-[var(--transition-base)] hover:-translate-y-[15px] hover:bg-yellow-400"
+              className="h-[52px] shrink-0 cursor-pointer rounded-full bg-yellow-500 px-7 text-[0.95rem] font-bold text-navy-900 shadow-kuning transition-[var(--transition-base)] hover:-translate-y-0.5 hover:bg-yellow-400"
             >
               Cari Artikel
             </button>
