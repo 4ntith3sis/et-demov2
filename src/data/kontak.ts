@@ -28,9 +28,20 @@ export const kantor: Kantor[] = [
 ];
 
 export const jamOperasional = [
-  { hari: "Senin – Jumat", jam: "09.00 – 18.00 WIB" },
-  { hari: "Sabtu", jam: "09.00 – 14.00 WIB" },
-  { hari: "Minggu & hari libur", jam: "Tutup" },
+  { hari: "Senin – Jumat", jam: "09:00 – 17:00" },
+  { hari: "Sabtu", jam: "09:00 – 13:00" },
+  { hari: "Minggu & Libur", jam: "Tutup" },
+];
+
+/** Opsi dropdown "Topik Konsultasi" pada form /kontak — dari easytax-demo. */
+export const topikKonsultasi = [
+  "Laporan Perpajakan & Keuangan Bulanan",
+  "Laporan SPT Tahunan Badan (1771) / Orang Pribadi",
+  "Pengurusan PKP & e-Faktur DJP",
+  "Pengurusan EFIN & NPWP Badan",
+  "KAP Audit & Tax Opinion",
+  "Pendampingan Audit, Keberatan & Banding Pajak",
+  "Lainnya",
 ];
 
 export interface FaqKontak {

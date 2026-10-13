@@ -237,6 +237,24 @@ export function TikTok(props: PropsIkon) {
   );
 }
 
+export function PanahBawah(props: PropsIkon) {
+  return (
+    <Bungkus {...props}>
+      <path d="M6 9.5l6 6 6-6" />
+    </Bungkus>
+  );
+}
+
+export function Kalkulator(props: PropsIkon) {
+  return (
+    <Bungkus {...props}>
+      <rect x="5" y="3" width="14" height="18" rx="2.5" />
+      <path d="M8.5 7.5h7" />
+      <path d="M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 15.5h.01M12 15.5h.01M15.5 15.5h.01" />
+    </Bungkus>
+  );
+}
+
 export function WhatsApp(props: PropsIkon) {
   return (
     <Bungkus {...props}>
@@ -272,6 +290,8 @@ export const IKON = {
   instagram: Instagram,
   tiktok: TikTok,
   whatsapp: WhatsApp,
+  "panah-bawah": PanahBawah,
+  kalkulator: Kalkulator,
 } satisfies Record<NamaIkon, (props: PropsIkon) => React.ReactNode>;
 
 export type { PropsIkon };

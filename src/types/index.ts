@@ -29,7 +29,9 @@ export type NamaIkon =
   | "tren-naik"
   | "instagram"
   | "tiktok"
-  | "whatsapp";
+  | "whatsapp"
+  | "panah-bawah"
+  | "kalkulator";
 
 /** Judul + deskripsi standar untuk bagian halaman. */
 export interface JudulBagian {

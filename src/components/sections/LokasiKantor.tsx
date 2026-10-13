@@ -20,21 +20,21 @@ export function LokasiKantor() {
       className="bg-white py-[clamp(44px,6.4vw,64px)]"
     >
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
-              Lokasi Kantor
-            </span>
+        {/* Judul + deskripsi dalam satu blok sejajar kiri, supaya paragraf
+            tidak mengambang terpisah di pojok kanan. */}
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+            Lokasi Kantor
+          </span>
 
-            <h2
-              id="lokasi-judul"
-              className="mt-6 max-w-[560px] font-heading text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.2] font-bold tracking-[-0.03em] text-navy-900 text-balance"
-            >
-              Kunjungi kantor kami di Cilandak, Jakarta Selatan
-            </h2>
-          </div>
+          <h2
+            id="lokasi-judul"
+            className="mt-6 max-w-[560px] font-heading text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.2] font-bold tracking-[-0.03em] text-navy-900 text-balance"
+          >
+            Kunjungi kantor kami di Cilandak, Jakarta Selatan
+          </h2>
 
-          <p className="max-w-[420px] text-[0.95rem] leading-[1.7] text-teks-sekunder">
+          <p className="mt-4 max-w-[560px] text-[0.95rem] leading-[1.7] text-teks-sekunder">
             Konsultasi awal bisa dilakukan langsung di kantor pada jam kerja,
             atau lewat WhatsApp bila Anda sedang di luar kota.
           </p>
