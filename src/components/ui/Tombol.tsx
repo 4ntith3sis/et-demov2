@@ -16,10 +16,10 @@ type Ukuran = "kecil" | "sedang" | "besar";
 const GAYA_VARIAN: Record<Varian, string> = {
   // Kuning solid di atas navy — CTA utama brand.
   utama:
-    "bg-yellow-500 text-navy-900 font-extrabold shadow-kuning hover:bg-yellow-400 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgb(244_201_34/0.5)] active:translate-y-0",
+    "bg-yellow-500 text-navy-900 font-extrabold shadow-kuning hover:-translate-y-0.5 hover:shadow-[0_12px_28px_color-mix(in_srgb,var(--color-brand-yellow)_50%,transparent)] active:translate-y-0",
   // Navy solid — dipakai di section terang.
   sekunder:
-    "bg-navy-900 text-white font-bold hover:bg-navy-800 hover:-translate-y-0.5 active:translate-y-0",
+    "bg-navy-900 text-white font-bold hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0",
   // Garis navy — CTA sekunder di atas latar putih.
   garis:
     "bg-transparent text-navy-900 border-[1.5px] border-navy-900/25 font-bold hover:bg-navy-900 hover:text-white hover:border-navy-900 hover:-translate-y-0.5",

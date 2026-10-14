@@ -20,7 +20,7 @@ export function FaqKontak() {
     >
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
         <div className="mx-auto mb-10 max-w-[680px] text-center">
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
             FAQ Kontak
           </span>
 
@@ -40,7 +40,7 @@ export function FaqKontak() {
                 key={f.pertanyaan}
                 className={
                   terbuka
-                    ? "mb-4 overflow-hidden rounded-xl border border-navy-800 bg-white shadow-md"
+                    ? "mb-4 overflow-hidden rounded-xl border border-navy-900 bg-white shadow-md"
                     : "mb-4 overflow-hidden rounded-xl border border-garis bg-netral-putih transition-[var(--transition-base)]"
                 }
               >

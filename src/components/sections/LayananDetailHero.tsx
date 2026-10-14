@@ -13,7 +13,7 @@ import type { LayananBeranda } from "@/data/layanan";
  */
 export function LayananDetailHero({ layanan }: { layanan: LayananBeranda }) {
   return (
-    <section className="border-b border-white/10 bg-navy-hero px-6 pt-[60px] pb-[70px] text-white md:px-8">
+    <section className="border-b border-white/10 bg-navy-900 px-6 pt-[clamp(48px,6vw,60px)] pb-[clamp(48px,6.4vw,70px)] text-white md:px-8">
       <div className="mx-auto grid w-full max-w-maks grid-cols-1 items-center gap-[50px] lg:grid-cols-2">
         <div>
           <nav
@@ -32,7 +32,7 @@ export function LayananDetailHero({ layanan }: { layanan: LayananBeranda }) {
             <span className="font-bold text-yellow-500">{layanan.judul}</span>
           </nav>
 
-          <p className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-white/16 bg-white/6 px-4 py-2.5 text-[0.78rem] font-extrabold tracking-[0.13em] text-yellow-400 uppercase">
+          <p className="mb-4 inline-flex items-center gap-2.5 rounded-full border border-white/16 bg-white/6 px-4 py-2.5 text-[0.78rem] font-extrabold tracking-[0.13em] text-yellow-500 uppercase">
             <span className="h-[7px] w-[7px] shrink-0 rounded-full bg-yellow-500" />
             Tax &amp; Accounting Service
           </p>
@@ -60,7 +60,7 @@ export function LayananDetailHero({ layanan }: { layanan: LayananBeranda }) {
           </div>
         </div>
 
-        <div className="relative h-[390px] overflow-hidden rounded-[28px] bg-navy-950">
+        <div className="relative h-[390px] overflow-hidden rounded-[28px] bg-navy-900">
           <Image
             src={layanan.gambar}
             alt={layanan.judul}

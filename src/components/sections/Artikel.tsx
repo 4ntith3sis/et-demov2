@@ -9,9 +9,9 @@ import { Tombol } from "@/components/ui/Tombol";
 import { artikelBeranda, type ArtikelBeranda } from "@/data/artikel";
 
 /**
- * Section Artikel di beranda, diport dari easytax-demo: kolom kiri berisi
- * judul + deskripsi + tombol "Lihat Semua Artikel", kolom kanan carousel
- * kartu artikel dengan tombol navigasi yang muncul di tepi thumbnail.
+ * Section Artikel di beranda: kolom kiri berisi judul + deskripsi + tombol
+ * "Lihat Semua Artikel", kolom kanan carousel kartu artikel (2 per tampilan
+ * di sm+, 1 di mobile) dengan tombol navigasi di tepi thumbnail 16:9.
  */
 export function Artikel() {
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -53,7 +53,7 @@ export function Artikel() {
     <section
       id="artikel"
       aria-labelledby="artikel-judul"
-      className="bg-netral-lat py-[clamp(52px,6.4vw,90px)]"
+      className="bg-netral-lat py-[clamp(48px,6.4vw,88px)]"
     >
       <div className="mx-auto grid w-full max-w-maks grid-cols-1 gap-10 px-6 lg:grid-cols-[minmax(0,40fr)_minmax(0,60fr)] lg:gap-8 md:px-8">
         {/* Kolom kiri: pengantar */}
@@ -87,7 +87,7 @@ export function Artikel() {
         </div>
 
         {/* Kolom kanan: carousel */}
-        <div className="relative min-w-0 [--kartu:w-[340px]] max-lg:[--kartu:min(340px,72vw)]">
+        <div className="relative min-w-0">
           <div
             ref={viewportRef}
             tabIndex={0}
@@ -101,7 +101,7 @@ export function Artikel() {
                 <div
                   key={artikel.slug}
                   data-slide
-                  className="flex w-[var(--kartu)] shrink-0 snap-start"
+                  className="flex w-full shrink-0 snap-start sm:w-[calc((100%-1.5rem)/2)]"
                 >
                   <KartuArtikel artikel={artikel} />
                 </div>
@@ -114,7 +114,7 @@ export function Artikel() {
             onClick={() => geser(-1)}
             disabled={!bisaKiri}
             aria-label="Artikel sebelumnya"
-            className="absolute top-[85px] left-0 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-garis bg-white text-navy-900 shadow-md transition-colors not-disabled:hover:border-navy-900 not-disabled:hover:bg-navy-900 not-disabled:hover:text-white disabled:cursor-not-allowed disabled:opacity-35 max-lg:left-8 max-lg:translate-x-0"
+            className="absolute top-[96px] left-0 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-garis bg-white text-navy-900 shadow-md transition-colors not-disabled:hover:border-navy-900 not-disabled:hover:bg-navy-900 not-disabled:hover:text-white disabled:cursor-not-allowed disabled:opacity-35 max-lg:left-8 max-lg:translate-x-0"
           >
             <PanahKiri className="h-5 w-5" />
           </button>
@@ -124,7 +124,7 @@ export function Artikel() {
             onClick={() => geser(1)}
             disabled={!bisaKanan}
             aria-label="Artikel berikutnya"
-            className="absolute top-[85px] right-0 grid h-14 w-14 translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-garis bg-white text-navy-900 shadow-md transition-colors not-disabled:hover:border-navy-900 not-disabled:hover:bg-navy-900 not-disabled:hover:text-white disabled:cursor-not-allowed disabled:opacity-35 max-lg:right-8 max-lg:translate-x-0"
+            className="absolute top-[96px] right-0 grid h-14 w-14 translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-garis bg-white text-navy-900 shadow-md transition-colors not-disabled:hover:border-navy-900 not-disabled:hover:bg-navy-900 not-disabled:hover:text-white disabled:cursor-not-allowed disabled:opacity-35 max-lg:right-8 max-lg:translate-x-0"
           >
             <PanahKanan className="h-5 w-5" />
           </button>
@@ -137,12 +137,12 @@ export function Artikel() {
 function KartuArtikel({ artikel }: { artikel: ArtikelBeranda }) {
   return (
     <article className="flex h-full w-full flex-col overflow-hidden rounded-xl border border-garis bg-white shadow-sm transition-[var(--transition-base)] hover:-translate-y-2 hover:shadow-lg">
-      <div className="group/thumb relative h-[150px] shrink-0 overflow-hidden bg-navy-hero">
+      <div className="group/thumb relative aspect-video shrink-0 overflow-hidden bg-navy-900">
         <Image
           src={artikel.gambar}
           alt={artikel.judul}
           fill
-          sizes="(max-width: 1024px) 72vw, 340px"
+          sizes="(max-width: 639px) 92vw, (max-width: 1023px) 50vw, 320px"
           className="object-cover transition-transform duration-300 group-hover/thumb:scale-105"
         />
         <span className="absolute top-4 left-4 z-2 rounded-full bg-yellow-500 px-3 py-1 text-[0.75rem] font-bold shadow-sm tracking-[0.03em] text-navy-900 uppercase">
@@ -171,7 +171,7 @@ function KartuArtikel({ artikel }: { artikel: ArtikelBeranda }) {
 
         <Link
           href={`/tulisan-pajak/${artikel.slug}`}
-          className="inline-flex items-center gap-2 text-[0.88rem] font-bold text-navy-900 no-underline transition-all hover:gap-3 hover:text-yellow-600"
+          className="inline-flex w-fit items-center gap-2 py-1 text-[0.88rem] font-bold text-navy-900 no-underline transition-all hover:gap-3"
         >
           Baca Selengkapnya
           <PanahKanan className="h-3.5 w-3.5" />

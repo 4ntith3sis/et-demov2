@@ -76,7 +76,7 @@ export function DaftarIsiArtikel({ headings }: { headings: HeadingToc[] }) {
                   aria-hidden="true"
                   className={
                     menyala
-                      ? "font-heading text-[0.72rem] font-extrabold text-yellow-600 tabular-nums"
+                      ? "font-heading text-[0.72rem] font-extrabold text-navy-900 tabular-nums"
                       : "font-heading text-[0.72rem] font-extrabold text-teks-redup tabular-nums"
                   }
                 >

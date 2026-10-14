@@ -45,7 +45,7 @@ const PENGURANG_ITEMS = [
 
 function JudulBagianForm({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="mt-8 mb-4 border-b border-garis pb-2.5 text-xs font-extrabold tracking-[0.16em] text-yellow-600 uppercase first:mt-0">
+    <h3 className="mt-8 mb-4 border-b border-garis pb-2.5 text-xs font-extrabold tracking-[0.16em] text-navy-900 uppercase first:mt-0">
       {children}
     </h3>
   );

@@ -48,7 +48,7 @@ export async function generateMetadata({
 export default function HalamanArtikel({ params }: { params: Params }) {
   return (
     <Suspense
-      fallback={<div className="min-h-[70vh] bg-navy-hero" aria-busy="true" />}
+      fallback={<div className="min-h-[70vh] bg-navy-900" aria-busy="true" />}
     >
       <IsiArtikelHalaman params={params} />
     </Suspense>

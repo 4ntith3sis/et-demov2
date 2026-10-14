@@ -23,7 +23,7 @@ export function LokasiKantor() {
         {/* Judul + deskripsi dalam satu blok sejajar kiri, supaya paragraf
             tidak mengambang terpisah di pojok kanan. */}
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
             Lokasi Kantor
           </span>
 
@@ -64,11 +64,11 @@ export function LokasiKantor() {
 
               <ul className="mt-4 space-y-3">
                 <li className="flex items-start gap-3 text-[0.9rem] leading-[1.6] text-teks-sekunder">
-                  <Lokasi className="mt-0.5 h-4.5 w-4.5 shrink-0 text-yellow-600" />
+                  <Lokasi className="mt-0.5 h-4.5 w-4.5 shrink-0 text-navy-900" />
                   {kantorPusat.alamat}
                 </li>
                 <li className="flex items-center gap-3 text-[0.9rem] text-teks-sekunder">
-                  <Telepon className="h-4.5 w-4.5 shrink-0 text-yellow-600" />
+                  <Telepon className="h-4.5 w-4.5 shrink-0 text-navy-900" />
                   {kantorPusat.telepon}
                 </li>
               </ul>
@@ -77,7 +77,7 @@ export function LokasiKantor() {
                 href={kantorPusat.peta}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-5 inline-flex h-11 items-center rounded-md bg-navy-hero px-6 text-[0.9rem] font-bold text-white no-underline transition-[var(--transition-base)] hover:-translate-y-0.5 hover:bg-navy-950"
+                className="mt-5 inline-flex h-11 items-center rounded-md bg-navy-900 px-6 text-[0.9rem] font-bold text-white no-underline transition-[var(--transition-base)] hover:-translate-y-0.5"
               >
                 Lihat di Google Maps
               </a>
@@ -85,7 +85,7 @@ export function LokasiKantor() {
 
             <div className="rounded-2xl border border-garis bg-white p-6">
               <div className="flex items-center gap-2.5">
-                <span className="grid h-8 w-8 place-items-center rounded-lg bg-navy-hero text-yellow-500">
+                <span className="grid h-8 w-8 place-items-center rounded-lg bg-navy-900 text-yellow-500">
                   <Jam className="h-4 w-4" />
                 </span>
                 <h3 className="font-heading text-[1.02rem] font-bold tracking-[-0.02em] text-navy-900">

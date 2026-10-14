@@ -67,8 +67,8 @@ export function BadanArtikel({
                       key={`list-${i}`}
                       className={
                         b.ordered
-                          ? "mb-6 grid list-decimal gap-2.5 pl-6 marker:font-heading marker:font-extrabold marker:text-yellow-600"
-                          : "mb-6 grid list-disc gap-2.5 pl-6 marker:text-yellow-600"
+                          ? "mb-6 grid list-decimal gap-2.5 pl-6 marker:font-heading marker:font-extrabold marker:text-navy-900"
+                          : "mb-6 grid list-disc gap-2.5 pl-6 marker:text-navy-900"
                       }
                     >
                       {b.items.map((item, j) => (
@@ -87,7 +87,7 @@ export function BadanArtikel({
                 return i === 0 ? (
                   <p
                     key={`p-${i}`}
-                    className="mb-6 text-[1.1rem] leading-[1.75] font-medium text-navy-800"
+                    className="mb-6 text-[1.1rem] leading-[1.75] font-medium text-navy-900"
                   >
                     {b.text}
                   </p>

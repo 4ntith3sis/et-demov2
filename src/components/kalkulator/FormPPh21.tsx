@@ -261,7 +261,7 @@ export function FormPPh21({
       <div className="flex flex-col gap-5">
         <SelectPajak id="jenis-pemotongan" label="Jenis Pemotongan" value={jenis} onChange={handleJenisChange} options={JENIS_PEMOTONGAN} />
         <SelectPajak id="jenis-pph-tahunan" label="Jenis PPh Tahunan" value={jenisP3K} onChange={setJenisP3K} options={JENIS_PPH_TAHUNAN} />
-        <p className="!mt-8 border-b border-garis pb-2.5 text-xs font-extrabold tracking-[0.16em] text-yellow-600 uppercase">
+        <p className="!mt-8 border-b border-garis pb-2.5 text-xs font-extrabold tracking-[0.16em] text-navy-900 uppercase">
           Informasi Pegawai
         </p>
         <SelectPajak

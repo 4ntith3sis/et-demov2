@@ -36,7 +36,7 @@ export function Mitra() {
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-[560px]">
-            <span className="inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+            <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
               Mitra yang sudah percaya
             </span>
 
@@ -55,16 +55,16 @@ export function Mitra() {
             </p>
           </div>
 
-          <ul className="grid shrink-0 grid-cols-3 gap-3 lg:gap-4">
+          <ul className="flex shrink-0 flex-wrap gap-3 lg:gap-4">
             {FAKTA.map((fakta) => (
               <li
                 key={fakta.label}
-                className="min-w-[112px] rounded-xl border border-garis bg-netral-lat px-4 py-3.5 text-center"
+                className="min-w-[112px] flex-1 rounded-xl border border-garis bg-netral-lat px-4 py-3.5 text-center"
               >
                 <span className="block font-heading text-[1.15rem] leading-none font-bold tracking-[-0.035em] text-navy-900">
                   {fakta.nilai}
                 </span>
-                <span className="mt-2 block text-[0.7rem] leading-tight font-semibold tracking-[0.02em] text-teks-redup uppercase">
+                <span className="mt-2 block text-[0.7rem] leading-tight font-semibold tracking-[0.02em] text-teks-redup uppercase break-words">
                   {fakta.label}
                 </span>
               </li>
@@ -79,14 +79,14 @@ export function Mitra() {
                 key={`${file}-${i}`}
                 className="flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-garis bg-white px-4 shadow-sm"
               >
-                <span className="relative block h-9 w-[104px]">
+                <span className="relative block h-14 w-[104px]">
                   <Image
                     src={`/images/clients/${file}`}
                     alt={namaMitra[file] ?? "Mitra EasyTax"}
                     fill
                     loading="lazy"
                     sizes="104px"
-                    className="object-contain object-center opacity-80 transition-opacity duration-300 hover:opacity-100"
+                    className="object-contain object-center"
                   />
                 </span>
               </div>

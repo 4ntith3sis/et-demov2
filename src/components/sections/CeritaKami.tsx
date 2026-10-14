@@ -54,9 +54,9 @@ export function CeritaKami() {
       aria-labelledby="cerita-judul"
       className="bg-white py-[clamp(48px,6.5vw,88px)]"
     >
-      <div className="mx-auto grid w-full max-w-maks grid-cols-1 items-center gap-12 px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 md:px-8">
+      <div className="mx-auto grid w-full max-w-maks grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 md:px-8">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
             Tentang Kami
           </span>
 
@@ -92,7 +92,7 @@ export function CeritaKami() {
                 key={f.label}
                 className="flex items-center gap-3 rounded-xl border border-garis bg-white px-4 py-3.5 shadow-sm"
               >
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-navy-hero text-yellow-500">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-navy-900 text-yellow-500">
                   {f.ikon}
                 </span>
                 <span className="min-w-0">

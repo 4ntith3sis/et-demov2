@@ -93,7 +93,7 @@ export function FormPertanyaan() {
                   name="topic"
                   required
                   defaultValue=""
-                  className="w-full rounded-lg border border-garis bg-netral-lat px-4 py-3 text-[0.95rem] text-teks-utama transition-[var(--transition-base)] focus:border-yellow-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-yellow-500/15"
+                  className="w-full rounded-lg border border-garis bg-netral-lat px-4 py-3 text-[0.95rem] text-teks-utama transition-[var(--transition-base)] focus:border-navy-900 focus:bg-white"
                 >
                   <option value="" disabled>
                     Pilih Topik Konsultasi
@@ -115,7 +115,7 @@ export function FormPertanyaan() {
                   rows={4}
                   required
                   placeholder="Ceritakan kebutuhan perpajakan bisnis Anda — kami akan bantu rekomendasikan solusi yang sesuai."
-                  className="w-full resize-none rounded-lg border border-garis bg-netral-lat px-4 py-3 text-[0.95rem] text-teks-utama placeholder:text-teks-redup transition-[var(--transition-base)] focus:border-yellow-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-yellow-500/15"
+                  className="w-full resize-none rounded-lg border border-garis bg-netral-lat px-4 py-3 text-[0.95rem] text-teks-utama placeholder:text-teks-redup transition-[var(--transition-base)] focus:border-navy-900 focus:bg-white"
                 />
               </label>
 
@@ -123,7 +123,7 @@ export function FormPertanyaan() {
                 Saya setuju data yang saya kirim akan diproses sesuai{" "}
                 <a
                   href="#"
-                  className="font-semibold text-yellow-600 underline underline-offset-2"
+                  className="font-semibold text-navy-900 underline underline-offset-2"
                 >
                   Kebijakan Privasi
                 </a>{" "}
@@ -133,7 +133,7 @@ export function FormPertanyaan() {
               <button
                 type="submit"
                 disabled={status === "mengirim"}
-                className="group/submit mt-6 flex items-center justify-center gap-2.5 rounded-md bg-yellow-500 px-8 py-[13px] text-[0.95rem] font-extrabold whitespace-nowrap text-navy-900 shadow-kuning transition-[var(--transition-base)] hover:bg-yellow-400 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgb(244_201_34/0.5)] active:translate-y-0 disabled:pointer-events-none disabled:opacity-55"
+                className="group/submit mt-6 flex items-center justify-center gap-2.5 rounded-md bg-yellow-500 px-8 py-[13px] text-[0.95rem] font-extrabold whitespace-nowrap text-navy-900 shadow-kuning transition-[var(--transition-base)] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_color-mix(in_srgb,var(--color-brand-yellow)_50%,transparent)] active:translate-y-0 disabled:pointer-events-none disabled:opacity-55"
               >
                 {status === "mengirim" ? "Mengirim…" : "Kirim Pertanyaan"}
                 <PanahKanan className="h-4 w-4 transition-transform group-hover/submit:translate-x-1" />
@@ -203,10 +203,10 @@ export function FormPertanyaan() {
 
               <a
                 href="/tentang-kami"
-                className="group/profil mt-4 flex items-center gap-2 text-[0.9rem] font-bold text-navy-900 no-underline"
+                className="group/profil mt-4 flex w-fit items-center gap-2 py-1 text-[0.9rem] font-bold text-navy-900 no-underline"
               >
                 Lihat profil kantor kami
-                <PanahKanan className="h-4 w-4 text-yellow-600 transition-transform group-hover/profil:translate-x-1" />
+                <PanahKanan className="h-4 w-4 text-navy-900 transition-transform group-hover/profil:translate-x-1" />
               </a>
             </div>
           </aside>
@@ -239,7 +239,7 @@ function Field({
         type={type}
         placeholder={placeholder}
         required={required}
-        className="w-full rounded-lg border border-garis bg-netral-lat px-4 py-3 text-[0.95rem] text-teks-utama placeholder:text-teks-redup transition-[var(--transition-base)] focus:border-yellow-500 focus:bg-white focus:outline-none focus:ring-4 focus:ring-yellow-500/15"
+        className="w-full rounded-lg border border-garis bg-netral-lat px-4 py-3 text-[0.95rem] text-teks-utama placeholder:text-teks-redup transition-[var(--transition-base)] focus:border-navy-900 focus:bg-white"
       />
     </label>
   );

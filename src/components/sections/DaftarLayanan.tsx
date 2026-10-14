@@ -39,7 +39,7 @@ export function DaftarLayanan() {
         {/* Judul + pencarian */}
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex flex-col items-start gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+            <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
               Daftar Layanan yang Tersedia
             </span>
 
@@ -72,7 +72,7 @@ export function DaftarLayanan() {
                 onChange={(e) => setKunci(e.target.value)}
                 placeholder="Cari layanan, mis. SPT atau PKP"
                 autoComplete="off"
-                className="h-[52px] w-full rounded-md border border-garis bg-white pr-11 pl-11 text-[0.95rem] text-teks-gelap outline-none transition-[var(--transition-base)] placeholder:text-teks-terang focus:border-navy-900 [&::-webkit-search-cancel-button]:appearance-none"
+                className="h-[52px] w-full rounded-md border border-garis bg-white pr-11 pl-11 text-[0.95rem] text-teks-gelap outline-none transition-[var(--transition-base)] placeholder:text-teks-redup focus:border-navy-900 [&::-webkit-search-cancel-button]:appearance-none"
               />
               {kunci.length > 0 && (
                 <button
@@ -99,7 +99,7 @@ export function DaftarLayanan() {
           <ul className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {hasil.map((layanan) => (
               <li key={layanan.slug}>
-                <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-garis border-t-[3px] border-t-navy-800 bg-white shadow-sm transition-[var(--transition-base)] hover:-translate-y-2 hover:border-t-yellow-500 hover:shadow-xl">
+                <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-garis bg-white shadow-sm transition-[var(--transition-base)] hover:-translate-y-2 hover:shadow-xl">
                   <div className="relative h-[200px] w-full shrink-0 overflow-hidden border-b border-garis bg-netral-lat">
                     <Image
                       src={layanan.gambar}
@@ -119,7 +119,7 @@ export function DaftarLayanan() {
                     </p>
                     <Link
                       href={`/layanan/${layanan.slug}`}
-                      className="inline-flex h-[42px] w-fit items-center gap-2 rounded-md bg-yellow-500 px-5 text-[0.9rem] font-extrabold text-navy-900 no-underline transition-[var(--transition-base)] hover:-translate-y-0.5 hover:bg-yellow-400 hover:shadow-kuning"
+                      className="inline-flex h-[42px] w-fit items-center gap-2 rounded-md bg-yellow-500 px-5 text-[0.9rem] font-extrabold text-navy-900 no-underline transition-[var(--transition-base)] hover:-translate-y-0.5 hover:shadow-kuning"
                     >
                       <PanahKanan className="h-3.5 w-3.5" />
                       Lihat Detail Layanan
@@ -145,7 +145,7 @@ export function DaftarLayanan() {
             <button
               type="button"
               onClick={() => setKunci("")}
-              className="h-11 cursor-pointer rounded-md bg-navy-hero px-6 text-[0.9rem] font-bold text-white transition-colors hover:bg-navy-950"
+              className="h-11 cursor-pointer rounded-md bg-navy-900 px-6 text-[0.9rem] font-bold text-white transition-[var(--transition-base)] hover:-translate-y-0.5 hover:shadow-lg"
             >
               Tampilkan semua layanan
             </button>

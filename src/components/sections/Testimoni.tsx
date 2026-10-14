@@ -2,32 +2,16 @@ import { Bintang } from "@/components/ikon";
 import { testimoni, type Testimoni } from "@/data/testimoni";
 
 /**
- * Section Testimoni: tiga kolom kutipan yang bergerak vertikal.
- *
- * Kolom kiri dan kanan turun, kolom tengah naik, sehingga arah mata bergerak
- * seperti zigzag. Setiap kolom memakai util `.animasi-marquee-atas` /
- * `.animasi-marquee-bawah` dari globals.css; daftarnya digandakan agar
- * loop translateY(-50%) menyambung tanpa lompatan.
+ * Section Testimoni: satu baris kartu kutipan yang bergeser horizontal
+ * dari kiri ke kanan (`.animasi-marquee-terbalik` di globals.css).
+ * Daftar digandakan dua kali supaya loop translateX(-50%) menyambung
+ * tanpa lompatan; jarak antar kartu memakai margin agar setengah-gap
+ * tidak menggeser titik sambung loop.
  */
-
-/** Bagi rata kutipan ke tiga kolom tanpa menyisakan kolom kosong. */
-function bagiTiga(data: Testimoni[]): Testimoni[][] {
-  const kolom: Testimoni[][] = [[], [], []];
-  data.forEach((item, i) => kolom[i % 3].push(item));
-  return kolom;
-}
-
-/** Liputan daftar minimum supaya kolom tidak terlihat bolong. */
-function ulangi(data: Testimoni[]): Testimoni[] {
-  if (data.length === 0) return [];
-  const satuRonde = [...data];
-  while (satuRonde.length < 4) satuRonde.push(...data);
-  return [...satuRonde, ...satuRonde];
-}
 
 function Kartu({ item }: { item: Testimoni }) {
   return (
-    <figure className="mb-5 flex flex-col rounded-2xl border border-garis bg-white p-6 shadow-sm">
+    <figure className="flex h-full w-full flex-col rounded-2xl border border-garis bg-white p-6 shadow-sm">
       <div className="mb-3 flex items-center gap-1 text-yellow-500">
         {Array.from({ length: item.rating }).map((_, i) => (
           <Bintang key={i} className="h-3.5 w-3.5" />
@@ -39,7 +23,7 @@ function Kartu({ item }: { item: Testimoni }) {
       </blockquote>
 
       <figcaption className="mt-5 flex items-center gap-3 border-t border-garis-halus pt-4">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-navy-hero font-heading text-[0.75rem] font-bold text-yellow-500">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-navy-900 font-heading text-[0.75rem] font-bold text-yellow-500">
           {item.inisial}
         </span>
         <span className="min-w-0">
@@ -55,43 +39,7 @@ function Kartu({ item }: { item: Testimoni }) {
   );
 }
 
-function Kolom({
-  data,
-  arah,
-}: {
-  data: Testimoni[];
-  arah: "atas" | "bawah";
-}) {
-  return (
-    <div className="relative h-[clamp(360px,52vh,560px)] overflow-hidden">
-      <div
-        className={
-          arah === "atas"
-            ? "animasi-marquee-atas flex w-full flex-col"
-            : "animasi-marquee-bawah flex w-full flex-col"
-        }
-      >
-        {ulangi(data).map((item, i) => (
-          <Kartu key={`${item.nama}-${i}`} item={item} />
-        ))}
-      </div>
-
-      {/* Fade di atas dan bawah supaya kartu yang keluar tidak terpotong. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-[linear-gradient(180deg,var(--color-netral-lat),transparent)]"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-[linear-gradient(0deg,var(--color-netral-lat),transparent)]"
-      />
-    </div>
-  );
-}
-
 export function Testimoni() {
-  const kolom = bagiTiga(testimoni);
-
   return (
     <section
       id="testimoni"
@@ -100,7 +48,7 @@ export function Testimoni() {
     >
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
         <div className="flex flex-col items-center text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+          <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
             Testimoni
           </span>
 
@@ -118,15 +66,27 @@ export function Testimoni() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {kolom.map((data, i) => (
-            <Kolom
-              key={i}
-              data={data}
-              /* Kiri dan kanan turun, tengah naik. */
-              arah={i === 1 ? "atas" : "bawah"}
-            />
-          ))}
+        <div className="relative mt-12 overflow-hidden">
+          <div className="animasi-marquee-terbalik flex w-max items-stretch">
+            {[...testimoni, ...testimoni].map((item, i) => (
+              <div
+                key={`${item.nama}-${i}`}
+                className="me-5 flex w-[min(340px,80vw)] shrink-0"
+              >
+                <Kartu item={item} />
+              </div>
+            ))}
+          </div>
+
+          {/* Fade di tepi kiri dan kanan supaya kartu yang masuk/keluar tidak terpotong. */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 left-0 w-14 bg-[linear-gradient(90deg,var(--color-netral-lat),transparent)] md:w-20"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 right-0 w-14 bg-[linear-gradient(270deg,var(--color-netral-lat),transparent)] md:w-20"
+          />
         </div>
       </div>
     </section>

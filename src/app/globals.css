@@ -2,38 +2,40 @@
 
 /* ==========================================================================
    Design token EasyTax
-   Primary  : deep blue navy
-   Secondary: yellow (gold)
-   Sumber nilai: port dari easytax-demo v1, sudah di-resolve dari 7+ lapis
-   override yang saling bertabrakan -> nilai efektif terakhir saja.
+   Brand (source of truth): logo resmi EasyTax — diekstrak dari piksel solid
+   public/images/logo-full.png (lockup dipakai Navbar), logo-mark.png, dan
+   public/favicon.webp; ketiganya identik:
+     navy   #152269  rgb(21, 34, 105)
+     kuning #f4c922  rgb(244, 201, 34)
+   Hanya DUA warna brand: navy-900 dan yellow-500 adalah alias class langsung
+   ke kedua nilai tersebut. Variasi navy/yellow lain (950/800/700/600/100,
+   600/400/300/light, navy-hero, teal-accent) sudah dimigrasikan dan dihapus:
+   teks di latar terang memakai navy, hover memakai opacity/transform/shadow.
+   Netral (teks-*, netral-*, garis-*) dan semantik (emerald/red-accent)
+   dipertahankan untuk keterbacaan & status.
    ========================================================================== */
+
+@theme static {
+  /* --- Brand: satu-satunya sumber warna navy & kuning EasyTax --- */
+  --color-brand-navy: #152269;
+  --color-brand-yellow: #f4c922;
+}
 
 @theme {
   /* --- Primary: Navy ---
-     Satu acuan: deep blue navy #0a1628 (dipakai v1 sebagai latar hero).
-     Semua token navy lain hanyalah terang/gelap dari hue yang sama, supaya
-     tidak ada lagi "navy" berbeda-bedanya di teks, tombol, ikon, dan kartu. */
-  --color-navy-900: #0a1628;
-  --color-navy-950: #060d18;
-  --color-navy-800: #1b2c4d;
-  --color-navy-700: #2c4470;
-  --color-navy-600: #3d5c94;
-  --color-navy-100: #eef1f9;
-
-  /* Alias latar hero = warna dasar yang sama, dipertahankan supaya
-     gradasi overlay foto dan pemakaian class tidak perlu diubah. */
-  --color-navy-hero: #0a1628;
+     Alias class ke brand-navy: satu nilai, satu nama utilitas.
+     Tidak ada varian navy lain dalam tema. */
+  --color-navy-900: var(--color-brand-navy);
 
   /* --- Secondary: Yellow / Gold ---
-     #f4c922 = sampel piksel dari logo. Shade terang/dark diturunkan dari nilai ini. */
-  --color-yellow-500: #f4c922;
-  --color-yellow-300: #ffe58a;
-  --color-yellow-400: #fbd743;
-  --color-yellow-600: #d4ab12;
-  --color-yellow-light: #fefbe9;
+     Alias class ke brand-yellow. Tidak ada varian kuning lain dalam tema.
+     Kuning resmi TIDAK digelapkan untuk teks: teks kecil di latar terang
+     memakai navy (kontras 14.34:1). */
+  --color-yellow-500: var(--color-brand-yellow);
 
-  /* --- Aksen pendukung --- */
-  --color-teal-accent: #00b4d8;
+  /* --- Aksen pendukung (SEMANTIK — bukan warna brand) ---
+     emerald = status sukses/verifikasi (checklist, lencana hijau),
+     red = status error/tutup pada form & jadwal. */
   --color-emerald-accent: #10b981;
   --color-red-accent: #ef4444;
 
@@ -45,12 +47,13 @@
   --color-garis-halus: #edf2f7;
 
   /* --- Teks --- */
-  --color-teks-utama: #0a1628;
-  --color-teks-gelap: #0a1628;
+  --color-teks-utama: var(--color-brand-navy);
+  --color-teks-gelap: var(--color-brand-navy);
   --color-teks-sekunder: #475569;
-  --color-teks-redup: #64748b;
+  /* #637083 (bukan #64748b): lulus 4.5:1 di putih (5.03:1) dan di
+     netral-lat (4.68:1); nilai lama gagal tipis di netral-lat (4.43:1). */
+  --color-teks-redup: #637083;
   --color-teks-terang: #cbd5e1;
-  --color-teks-putih: #ffffff;
 
   /* --- Tipografi --- */
   --font-heading: var(--font-outfit), "Outfit", sans-serif;
@@ -62,12 +65,12 @@
   --radius-lg: 18px;
   --radius-xl: 24px;
 
-  /* --- Shadow --- */
-  --shadow-sm: 0 2px 4px rgb(10 22 40 / 0.04);
-  --shadow-md: 0 4px 20px -2px rgb(10 22 40 / 0.08);
-  --shadow-lg: 0 12px 32px -4px rgb(10 22 40 / 0.12);
-  --shadow-xl: 0 24px 48px -12px rgb(10 22 40 / 0.18);
-  --shadow-kuning: 0 8px 24px rgb(244 201 34 / 0.4);
+  /* --- Shadow (warna dari token brand + opacity) --- */
+  --shadow-sm: 0 2px 4px color-mix(in srgb, var(--color-brand-navy) 4%, transparent);
+  --shadow-md: 0 4px 20px -2px color-mix(in srgb, var(--color-brand-navy) 8%, transparent);
+  --shadow-lg: 0 12px 32px -4px color-mix(in srgb, var(--color-brand-navy) 12%, transparent);
+  --shadow-xl: 0 24px 48px -12px color-mix(in srgb, var(--color-brand-navy) 18%, transparent);
+  --shadow-kuning: 0 8px 24px color-mix(in srgb, var(--color-brand-yellow) 40%, transparent);
 
   /* --- Transisi --- */
   --transition-base: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -92,22 +95,28 @@
 
   /* Fokus keyboard hanya tampil saat navigasi via keyboard, supaya tidak
      ada outline biru default yang merusak desain di klik mouse. */
-  :focus-visible {
-    outline: 2px solid var(--color-yellow-500);
-    outline-offset: 2px;
-    border-radius: 2px;
-  }
-
   ::selection {
     background-color: var(--color-yellow-500);
     color: var(--color-navy-900);
   }
 }
 
+/* Indikator fokus keyboard: cincin ganda navy (outline, 14.34:1 di putih)
+   + kuning (box-shadow, 9.03:1 di navy) supaya lulus 3:1 di latar terang
+   DAN gelap. Sengaja di luar @layer supaya menang atas utilitas
+   shadow/focus milik komponen saat fokus keyboard. */
+:focus-visible {
+  outline: 2px solid var(--color-navy-900);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px var(--color-yellow-500);
+}
+
 @layer utilities {
-  /* Marquee untuk ClientsMarquee. Animasi dimatikan otomatis saat pengguna
-     memilih reduce-motion, dan dual animation di-reverse supaya loop-nya
-     tidak "lompat" di detik ke-0. */
+  /* Marquee horizontal. `.animasi-marquee` bergeser ke kiri;
+     `.animasi-marquee-terbalik` (reverse) bergeser dari kiri ke kanan —
+     dipakai section Testimoni. Animasi dimatikan otomatis saat pengguna
+     memilih reduce-motion; isi track digandakan dua kali supaya
+     translateX(-50%) menyambung tanpa lompatan. */
   .animasi-marquee {
     animation: geser-marquee 40s linear infinite;
   }
@@ -116,30 +125,9 @@
     animation: geser-marquee 40s linear infinite reverse;
   }
 
-  .animasi-marquee:hover {
+  .animasi-marquee:hover,
+  .animasi-marquee-terbalik:hover {
     animation-play-state: paused;
-  }
-
-  /* Marquee vertikal untuk section Testimoni: daftar kartu bergerak ke atas
-     atau ke bawah. Isi kolom digandakan dua kali supaya translateY(50%)
-     menyambung kembali ke awal tanpa lompatan. */
-  .animasi-marquee-atas {
-    animation: geser-marquee-atas 42s linear infinite;
-  }
-
-  .animasi-marquee-bawah {
-    animation: geser-marquee-bawah 42s linear infinite;
-  }
-
-  .animasi-marquee-atas:hover,
-  .animasi-marquee-bawah:hover {
-    animation-play-state: paused;
-  }
-
-  /* Badge informasi melayang di hero artikel — meniru
-     `article-badge-float` easytax-demo. */
-  .animasi-layang {
-    animation: badge-layang 4s ease-in-out infinite;
   }
 
   /* Tautan navigasi: garis bawah kuning yang melebar saat hover atau
@@ -164,6 +152,29 @@
   .tautan-nav[aria-current="page"]::after {
     width: 100%;
   }
+
+  /* Overlay gradasi navy pada foto hero: warna dari token brand,
+     opacity rendah supaya biru di sekitar foto tetap terbaca seperti
+     warna logo. Default = vertikal (mobile), lg = horizontal. */
+  .gradasi-hero-foto {
+    background-image: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-brand-navy) 0%, transparent) 0%,
+      color-mix(in srgb, var(--color-brand-navy) 35%, transparent) 60%,
+      color-mix(in srgb, var(--color-brand-navy) 60%, transparent) 100%
+    );
+  }
+
+  @media (min-width: 1024px) {
+    .gradasi-hero-foto {
+      background-image: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--color-brand-navy) 92%, transparent) 0%,
+        color-mix(in srgb, var(--color-brand-navy) 40%, transparent) 32%,
+        color-mix(in srgb, var(--color-brand-navy) 0%, transparent) 58%
+      );
+    }
+  }
 }
 
 @keyframes geser-marquee {
@@ -175,44 +186,13 @@
   }
 }
 
-@keyframes badge-layang {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes geser-marquee-atas {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-50%);
-  }
-}
-
-@keyframes geser-marquee-bawah {
-  from {
-    transform: translateY(-50%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
   .animasi-marquee,
-  .animasi-marquee-terbalik,
-  .animasi-marquee-atas,
-  .animasi-marquee-bawah,
-  .animasi-layang {
+  .animasi-marquee-terbalik {
     animation: none;
   }
 }

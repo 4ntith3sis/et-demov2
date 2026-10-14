@@ -1,4 +1,11 @@
-import { Dokumen, Jam, Obrolan, Perisai, TrenNaik } from "@/components/ikon";
+import {
+  Dokumen,
+  Jam,
+  Obrolan,
+  PanahKanan,
+  Perisai,
+  TrenNaik,
+} from "@/components/ikon";
 
 const LANGKAH = [
   {
@@ -28,8 +35,10 @@ const LANGKAH = [
 ] as const;
 
 /**
- * Section "How It Works": panel navy melengkung berisi empat kartu langkah
- * dan garis waktu 01-04 di bawahnya, mengikuti referensi desain.
+ * Section "How It Works": panel navy melengkung berisi empat kartu langkah.
+ * Nomor langkah 01-04 berada di dalam kartu (badge kiri-atas, ikon kanan-atas);
+ * panah kuning di antara kartu menunjukkan alur: satu kolom → panah ke bawah,
+ * dua kolom → panah antar kolom + penghubung antar baris, empat kolom → kanan.
  */
 export function CaraKerja() {
   return (
@@ -38,7 +47,7 @@ export function CaraKerja() {
       aria-labelledby="cara-kerja-judul"
       className="bg-white px-6 py-[clamp(44px,7vw,64px)] md:px-8"
     >
-      <div className="relative mx-auto w-full max-w-maks overflow-hidden rounded-[28px] bg-navy-hero px-6 py-[clamp(40px,5vw,72px)] md:px-10">
+      <div className="relative mx-auto w-full max-w-maks overflow-hidden rounded-[28px] bg-navy-900 px-6 py-[clamp(40px,5vw,72px)] md:px-10">
         <div className="relative flex flex-col items-center text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-[0.85rem] font-bold tracking-[0.04em] text-white uppercase">
             <TrenNaik className="h-3.5 w-3.5 text-yellow-500" />
@@ -53,42 +62,41 @@ export function CaraKerja() {
           </h2>
         </div>
 
-        <ol className="relative mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <ol className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-[1fr_auto_1fr] sm:gap-x-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:gap-x-2">
           {LANGKAH.map((langkah, i) => (
-            <li
-              key={langkah.judul}
-              className="flex min-h-[210px] flex-col justify-between rounded-lg bg-white p-6"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="font-heading text-[1.32rem] leading-[1.15] font-bold tracking-[-0.035em] text-teks-gelap">
+            <li key={langkah.judul} className="contents">
+              <div className="flex min-h-[210px] flex-col rounded-lg bg-white p-6">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-navy-900 font-heading text-[0.9rem] font-bold text-white">
+                    0{i + 1}
+                  </span>
+                  <span className="shrink-0 text-teks-gelap">{langkah.ikon}</span>
+                </div>
+
+                <h3 className="mt-4 font-heading text-[1.32rem] leading-[1.15] font-bold tracking-[-0.035em] text-teks-gelap">
                   {langkah.judul}
                 </h3>
-                <span className="shrink-0 text-teks-gelap">{langkah.ikon}</span>
+
+                <p className="mt-3 text-[0.92rem] leading-[1.6] font-medium text-teks-sekunder">
+                  {langkah.deskripsi}
+                </p>
+
+                <span aria-hidden="true" className="sr-only">
+                  Langkah {i + 1}
+                </span>
               </div>
 
-              <p className="mt-8 text-[0.92rem] leading-[1.6] font-medium text-teks-sekunder">
-                {langkah.deskripsi}
-              </p>
-
-              <span aria-hidden="true" className="sr-only">
-                Langkah {i + 1}
-              </span>
-            </li>
-          ))}
-        </ol>
-
-        {/* Garis waktu 01 - 04 */}
-        <ol className="relative mt-12 flex items-center">
-          {LANGKAH.map((langkah, i) => (
-            <li key={langkah.judul} className="flex flex-1 items-center last:flex-none">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-navy-950 font-heading text-[0.95rem] font-bold text-white">
-                0{i + 1}
-              </span>
               {i < LANGKAH.length - 1 && (
                 <span
                   aria-hidden="true"
-                  className="mx-3 h-px w-full bg-white/25 max-lg:hidden"
-                />
+                  className={
+                    i === 1
+                      ? "flex items-center justify-center text-yellow-500 rotate-90 sm:col-span-3 lg:col-span-1 lg:rotate-0"
+                      : "flex items-center justify-center text-yellow-500 rotate-90 sm:rotate-0"
+                  }
+                >
+                  <PanahKanan className="h-4 w-4" />
+                </span>
               )}
             </li>
           ))}

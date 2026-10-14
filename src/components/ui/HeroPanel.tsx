@@ -50,7 +50,7 @@ export function HeroPanel({
   kartu = [],
 }: PropsHeroPanel) {
   return (
-    <section className="border-b border-white/10 bg-navy-hero px-6 pt-[60px] pb-[70px] text-white md:px-8">
+    <section className="border-b border-white/10 bg-navy-900 px-6 pt-[clamp(48px,6vw,60px)] pb-[clamp(48px,6.4vw,70px)] text-white md:px-8">
       <div className="mx-auto grid w-full max-w-maks grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
         <div>
           <nav
@@ -121,7 +121,7 @@ export function HeroPanel({
           )}
         </div>
 
-        <div className="relative min-h-[352px] overflow-hidden rounded-[28px] border border-garis bg-navy-950 shadow-lg">
+        <div className="relative min-h-[352px] overflow-hidden rounded-[28px] border border-garis bg-navy-900 shadow-lg">
           <Image
             src={gambar.src}
             alt={gambar.alt}

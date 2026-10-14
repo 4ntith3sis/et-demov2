@@ -19,7 +19,7 @@ export function ArtikelTerkait({ artikel }: { artikel: ArtikelBeranda[] }) {
     >
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
         <div className="mx-auto mb-10 max-w-[680px] text-center">
-          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
+          <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
             Rekomendasi Bacaan
           </span>
 
@@ -40,7 +40,7 @@ export function ArtikelTerkait({ artikel }: { artikel: ArtikelBeranda[] }) {
           {artikel.map((a) => (
             <li key={a.slug}>
               <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-garis bg-white shadow-sm transition-[var(--transition-base)] hover:-translate-y-2 hover:shadow-xl">
-                <div className="relative h-[150px] shrink-0 overflow-hidden bg-navy-hero">
+                <div className="relative h-[150px] shrink-0 overflow-hidden bg-navy-900">
                   <Image
                     src={a.gambar}
                     alt={a.judul}
@@ -65,7 +65,7 @@ export function ArtikelTerkait({ artikel }: { artikel: ArtikelBeranda[] }) {
                   <h3 className="mb-2 line-clamp-2 font-heading text-[1.22rem] leading-[1.4] font-bold text-navy-900">
                     <Link
                       href={`/tulisan-pajak/${a.slug}`}
-                      className="no-underline transition-colors hover:text-yellow-600"
+                      className="no-underline transition-colors hover:underline"
                     >
                       {a.judul}
                     </Link>
@@ -77,7 +77,7 @@ export function ArtikelTerkait({ artikel }: { artikel: ArtikelBeranda[] }) {
 
                   <Link
                     href={`/tulisan-pajak/${a.slug}`}
-                    className="inline-flex w-fit items-center gap-2 text-[0.88rem] font-bold text-navy-900 no-underline transition-[var(--transition-base)] hover:gap-3 hover:text-yellow-600"
+                    className="inline-flex w-fit items-center gap-2 py-1 text-[0.88rem] font-bold text-navy-900 no-underline transition-[var(--transition-base)] hover:gap-3"
                   >
                     Baca Selengkapnya
                     <PanahKanan className="h-3.5 w-3.5" />

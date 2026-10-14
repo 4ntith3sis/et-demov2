@@ -15,11 +15,11 @@ export function TimKonsultan() {
     <section
       id="tim"
       aria-labelledby="tim-judul"
-      className="relative overflow-hidden bg-navy-hero py-[clamp(48px,6.5vw,80px)]"
+      className="relative overflow-hidden bg-navy-900 py-[clamp(48px,6.5vw,80px)]"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-[180px] -left-[120px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgb(244_201_34/0.12)_0%,transparent_68%)]"
+        className="pointer-events-none absolute -top-[180px] -left-[120px] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--color-brand-yellow)_12%,transparent)_0%,transparent_68%)]"
       />
 
       <div className="relative mx-auto w-full max-w-maks px-6 md:px-8">
@@ -61,7 +61,7 @@ export function TimKonsultan() {
                   />
                 </span>
 
-                <span className="absolute -right-1 -bottom-1 grid h-9 w-9 place-items-center rounded-full border-2 border-navy-hero bg-yellow-500 text-navy-900">
+                <span className="absolute -right-1 -bottom-1 grid h-9 w-9 place-items-center rounded-full border-2 border-navy-900 bg-yellow-500 text-navy-900">
                   <Perisai className="h-4 w-4" />
                   <span className="sr-only">Konsultan {orang.lisensi}</span>
                 </span>

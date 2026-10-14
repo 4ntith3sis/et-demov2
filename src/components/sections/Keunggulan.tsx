@@ -57,14 +57,14 @@ export function Keunggulan() {
       aria-labelledby="keunggulan-judul"
       className="relative overflow-hidden bg-white text-teks-gelap"
     >
-      <div className="mx-auto grid w-full max-w-[1080px] grid-cols-1 gap-10 px-6 pt-[clamp(70px,8.2vw,128px)] pb-[clamp(64px,7vw,104px)] md:px-8 lg:grid-cols-[520px_1fr] lg:items-stretch lg:gap-6 lg:px-0">
-        <div className="relative flex flex-col items-start justify-start lg:pt-[2px]">
+      <div className="mx-auto grid w-full max-w-[1144px] grid-cols-1 gap-10 px-6 pt-[clamp(48px,5vw,68px)] pb-[clamp(48px,6.4vw,72px)] md:px-8 lg:grid-cols-[520px_1fr] lg:items-stretch lg:gap-6">
+        <div className="relative flex flex-col items-start justify-start">
           <div
             aria-hidden="true"
-            className="absolute top-[138px] left-[155px] h-[330px] w-[330px] rounded-full bg-[radial-gradient(circle,rgb(12_23_54/0.055)_1px,transparent_1.3px)] [background-size:8px_8px] max-lg:hidden"
+            className="absolute top-[138px] left-[155px] h-[330px] w-[330px] rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--color-brand-navy)_5.5%,transparent)_1px,transparent_1.3px)] [background-size:8px_8px] max-lg:hidden"
           />
 
-          <p className="relative mb-7 inline-flex w-max items-center gap-2 rounded-full border border-yellow-600/60 bg-yellow-500/12 px-5 py-2.5 text-[0.85rem] leading-none font-bold tracking-[0.04em] text-navy-900 uppercase">
+          <p className="relative mb-7 inline-flex w-max items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2.5 text-[0.85rem] leading-none font-bold tracking-[0.04em] text-navy-900 uppercase">
             <span className="grid h-3.5 w-3.5 place-items-center">
               <TrenNaik className="h-3.5 w-3.5" />
             </span>
@@ -90,7 +90,7 @@ export function Keunggulan() {
                 key={item.judul}
                 className="flex flex-col items-start gap-2.5 rounded-lg border border-garis bg-white px-4 py-4 shadow-sm"
               >
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-navy-hero text-yellow-500">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-navy-900 text-yellow-500">
                   {item.ikon}
                 </span>
                 <span className="font-heading text-[0.9rem] leading-[1.2] font-bold tracking-[-0.025em] text-teks-gelap">
@@ -104,14 +104,14 @@ export function Keunggulan() {
           </ul>
         </div>
 
-        <div className="flex flex-col gap-4 lg:self-end">
+        <div className="flex flex-col gap-4 lg:self-start lg:pt-16">
           {ALASAN.map((item) => (
             <article
               key={item.judul}
               className={
                 item.gelap
-                  ? "flex flex-col rounded-xl bg-navy-hero p-5 text-white"
-                  : "flex flex-col rounded-xl bg-[#f1f3f8] p-5 text-teks-gelap"
+                  ? "flex flex-col rounded-xl bg-navy-900 p-5 text-white"
+                  : "flex flex-col rounded-xl bg-netral-lat p-5 text-teks-gelap"
               }
             >
               <div className="flex items-center gap-3">
@@ -119,7 +119,7 @@ export function Keunggulan() {
                   className={
                     item.gelap
                       ? "grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/10 text-yellow-500"
-                      : "grid h-8 w-8 shrink-0 place-items-center rounded-full bg-navy-hero text-yellow-500"
+                      : "grid h-8 w-8 shrink-0 place-items-center rounded-full bg-navy-900 text-yellow-500"
                   }
                 >
                   {item.ikon}

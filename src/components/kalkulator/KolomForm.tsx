@@ -16,7 +16,7 @@ type PropsKolomForm = {
 
 /** Kelas input/select bersama supaya semua field seragam. */
 export const KELAS_KONTROL =
-  "w-full rounded-lg border border-garis bg-white px-4 py-3 text-[0.95rem] text-navy-900 transition-colors placeholder:text-teks-redup focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/35 focus:outline-none";
+  "w-full rounded-lg border border-garis bg-white px-4 py-3 text-[0.95rem] text-navy-900 transition-colors placeholder:text-teks-redup focus:border-navy-900";
 
 export function KolomForm({ id, label, children, help, error, center }: PropsKolomForm) {
   return (

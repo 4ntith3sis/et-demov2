@@ -24,7 +24,7 @@ const SOSMED = [
  */
 export function Footer() {
   return (
-    <footer className="border-t border-white/8 bg-navy-hero text-teks-terang">
+    <footer className="border-t border-white/8 bg-navy-900 text-teks-terang">
       <div className="mx-auto w-full max-w-maks px-6 pt-[clamp(44px,6vw,80px)] pb-8 md:px-8">
         <div className="grid grid-cols-1 gap-10 pb-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_0.95fr_1.1fr] lg:gap-12">
           {/* Identitas */}
@@ -39,7 +39,7 @@ export function Footer() {
               <span className="font-heading text-[1.75rem] leading-[1.1] font-extrabold tracking-[-0.02em] text-white">
                 {situs.nama}
               </span>
-              <span className="mt-0.5 text-[0.74rem] leading-[1.2] font-bold tracking-[0.02em] text-[#E5A812]">
+              <span className="mt-0.5 text-[0.74rem] leading-[1.2] font-bold tracking-[0.02em] text-yellow-500">
                 {situs.subjudul}
               </span>
             </Link>
@@ -58,7 +58,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-white/6 text-teks-terang transition-[var(--transition-base)] hover:-translate-y-0.75 hover:bg-yellow-400 hover:text-navy-900"
+                    className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-white/6 text-teks-terang transition-[var(--transition-base)] hover:-translate-y-0.75 hover:bg-yellow-500 hover:text-navy-900"
                   >
                     <Ikon className="h-4 w-4" />
                   </a>
@@ -71,7 +71,7 @@ export function Footer() {
           <nav aria-labelledby="footer-perusahaan">
             <h4
               id="footer-perusahaan"
-              className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-400"
+              className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-500"
             >
               Perusahaan
             </h4>
@@ -83,7 +83,7 @@ export function Footer() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-[0.92rem] text-teks-terang no-underline transition-[var(--transition-base)] hover:translate-x-1 hover:text-yellow-400"
+                      className="inline-block py-1 text-[0.92rem] text-teks-terang no-underline transition-[var(--transition-base)] hover:translate-x-1 hover:text-yellow-500"
                     >
                       {item.label}
                     </Link>
@@ -94,13 +94,13 @@ export function Footer() {
 
           {/* Jam operasional */}
           <div>
-            <h4 className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-400">
+            <h4 className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-500">
               Jam Kantor
             </h4>
             <ul className="mt-5 space-y-3.5">
               {jamOperasional.map((item) => (
                 <li key={item.hari} className="flex items-start gap-2.5 text-[0.92rem]">
-                  <Jam className="mt-0.75 h-4 w-4 shrink-0 text-yellow-400" />
+                  <Jam className="mt-0.75 h-4 w-4 shrink-0 text-yellow-500" />
                   <span>
                     <span className="block font-bold text-white">{item.hari}</span>
                     <span className="text-teks-terang">{item.jam}</span>
@@ -112,32 +112,32 @@ export function Footer() {
 
           {/* Kontak */}
           <div>
-            <h4 className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-400">
+            <h4 className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-500">
               Hubungi Kami
             </h4>
             <ul className="mt-5 space-y-4">
               <li className="flex items-start gap-3 text-[0.92rem]">
-                <WhatsApp className="mt-0.75 h-4.5 w-4.5 shrink-0 text-yellow-400" />
+                <WhatsApp className="mt-0.75 h-4.5 w-4.5 shrink-0 text-yellow-500" />
                 <a
                   href={situs.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-teks-terang no-underline transition-colors hover:text-yellow-400"
+                  className="inline-block py-1 text-teks-terang no-underline transition-colors hover:text-yellow-500"
                 >
                   {situs.kontak.telepon}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-[0.92rem]">
-                <Email className="mt-0.75 h-4.5 w-4.5 shrink-0 text-yellow-400" />
+                <Email className="mt-0.75 h-4.5 w-4.5 shrink-0 text-yellow-500" />
                 <a
                   href={`mailto:${situs.kontak.email}`}
-                  className="text-teks-terang no-underline transition-colors hover:text-yellow-400"
+                  className="inline-block py-1 text-teks-terang no-underline transition-colors hover:text-yellow-500"
                 >
                   {situs.kontak.email}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-[0.92rem]">
-                <Lokasi className="mt-0.75 h-4.5 w-4.5 shrink-0 text-yellow-400" />
+                <Lokasi className="mt-0.75 h-4.5 w-4.5 shrink-0 text-yellow-500" />
                 <span>{situs.kontak.alamat}</span>
               </li>
             </ul>
@@ -145,7 +145,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/8 pt-6 text-[0.85rem]">
-          <p className="text-teks-redup">
+          <p className="text-white/55">
             &copy; {TAHUN} {situs.nama}. All Rights Reserved.
           </p>
         </div>

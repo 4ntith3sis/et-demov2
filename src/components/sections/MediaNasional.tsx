@@ -27,8 +27,8 @@ function Wordmark({
   terang?: boolean;
 }) {
   /* Warna teks yang adaptable supaya wordmark terbaca di kedua latar. */
-  const gelap = terang ? "#FFFFFF" : "#0E1E40";
-  const redup = terang ? "rgba(255,255,255,0.6)" : "#64748b";
+  const gelap = terang ? "#FFFFFF" : "var(--color-brand-navy)";
+  const redup = terang ? "rgba(255,255,255,0.6)" : "var(--color-teks-redup)";
 
   switch (nama) {
     case "Industry.co.id":
@@ -92,7 +92,7 @@ function Wordmark({
           <text x="0" y="23" fontFamily="var(--font-heading)" fontWeight="900" fontSize="16" fill={gelap} letterSpacing="0.5">
             BUSINESS
           </text>
-          <text x="96" y="23" fontFamily="var(--font-heading)" fontWeight="800" fontSize="16" fill="#E5A812" letterSpacing="0.5">
+          <text x="96" y="23" fontFamily="var(--font-heading)" fontWeight="800" fontSize="16" fill="var(--color-brand-yellow)" letterSpacing="0.5">
             ASIA
           </text>
         </svg>

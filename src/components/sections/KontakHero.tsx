@@ -46,7 +46,7 @@ const kartuKontak = [
 
 export function KontakHero() {
   return (
-    <section className="bg-navy-hero px-6 pt-[60px] pb-[clamp(56px,7vw,84px)] text-white md:px-8">
+    <section className="bg-navy-900 px-6 pt-[clamp(48px,6vw,60px)] pb-[clamp(48px,6.4vw,72px)] text-white md:px-8">
       <div className="mx-auto w-full max-w-maks">
         <nav
           aria-label="Breadcrumb"
@@ -93,7 +93,7 @@ export function KontakHero() {
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-navy-900 text-yellow-500">
                   <k.ikon className="h-5.5 w-5.5" />
                 </span>
-                <span className="text-[0.7rem] font-extrabold tracking-[0.08em] text-navy-900/60 uppercase">
+                <span className="text-[0.7rem] font-extrabold tracking-[0.08em] text-navy-900/70 uppercase">
                   {k.eyebrow}
                 </span>
               </div>
@@ -114,7 +114,7 @@ export function KontakHero() {
                 className="group/action mt-auto flex items-center justify-between gap-3 border-t border-navy-900/15 pt-4 font-bold text-navy-900 no-underline"
               >
                 <span className="text-[0.92rem]">{k.aksi}</span>
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-navy-900 text-yellow-500 transition-[var(--transition-base)] group-hover/action:translate-x-1 group-hover/action:bg-navy-800">
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-navy-900 text-yellow-500 transition-[var(--transition-base)] group-hover/action:translate-x-1">
                   <PanahKanan className="h-4 w-4" />
                 </span>
               </a>

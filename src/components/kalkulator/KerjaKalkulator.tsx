@@ -32,9 +32,9 @@ export function KerjaKalkulator() {
   }
 
   return (
-    <section id="kalkulator" className="bg-netral-lat pt-10 pb-16 md:pt-14 md:pb-20">
+    <section id="kalkulator" className="bg-netral-lat pt-10 pb-11 md:pt-14 md:pb-16">
       <Wadah>
-        <div className="overflow-hidden rounded-[24px] border border-garis bg-white shadow-[0_28px_70px_rgb(10_22_40/0.10)]">
+        <div className="overflow-hidden rounded-[24px] border border-garis bg-white shadow-[0_28px_70px_color-mix(in_srgb,var(--color-brand-navy)_10%,transparent)]">
           {/* Kop kerja: merek + tab kalkulator */}
           <div className="flex flex-col gap-5 border-b border-garis px-6 py-6 md:px-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-center gap-3.5">

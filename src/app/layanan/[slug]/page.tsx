@@ -43,7 +43,7 @@ export async function generateMetadata({
  */
 export default function HalamanLayanan({ params }: { params: Params }) {
   return (
-    <Suspense fallback={<div className="min-h-[70vh] bg-navy-hero" aria-busy="true" />}>
+    <Suspense fallback={<div className="min-h-[70vh] bg-navy-900" aria-busy="true" />}>
       <IsiLayanan params={params} />
     </Suspense>
   );

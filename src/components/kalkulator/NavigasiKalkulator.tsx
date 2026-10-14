@@ -76,7 +76,7 @@ export function NavigasiKalkulator({
           {open ? (
             <div
               role="menu"
-              className="absolute right-0 z-30 mt-2 w-[260px] overflow-hidden rounded-xl border border-garis bg-white p-1.5 shadow-[0_20px_48px_rgb(10_22_40/0.16)]"
+              className="absolute right-0 z-30 mt-2 w-[260px] overflow-hidden rounded-xl border border-garis bg-white p-1.5 shadow-[0_20px_48px_color-mix(in_srgb,var(--color-brand-navy)_16%,transparent)]"
             >
               {TAB_LAINNYA.map((id) => {
                 const calc = TAX_CALCULATORS.find((c) => c.id === id)!;

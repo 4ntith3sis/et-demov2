@@ -22,12 +22,12 @@ export function Hero() {
     <section
       id="hero"
       aria-labelledby="hero-judul"
-      className="relative overflow-hidden bg-navy-hero text-white"
+      className="relative overflow-hidden bg-navy-900 text-white"
     >
       <div className="grid w-full grid-cols-1 items-stretch lg:grid-cols-[minmax(0,55%)_minmax(0,45%)]">
         {/* Kolom teks */}
-        <div className="z-3 flex flex-col justify-center px-6 pt-[clamp(52px,6vw,92px)] pb-[clamp(52px,6vw,92px)] md:px-8 lg:pr-9 lg:pl-[max(24px,calc((100vw-1200px)/2+24px))]">
-          <p className="inline-flex w-max max-w-full items-center gap-2.5 rounded-full border border-white/16 bg-white/6 px-4 py-2.5 text-[0.78rem] font-extrabold tracking-[0.13em] text-yellow-400 uppercase">
+        <div className="z-3 flex flex-col justify-center px-6 pt-[clamp(52px,6vw,92px)] pb-[clamp(48px,5vw,72px)] md:px-8 lg:pr-9 lg:pl-[max(24px,calc((100vw-1200px)/2+24px))]">
+          <p className="inline-flex w-max max-w-full items-center gap-2.5 rounded-full border border-white/16 bg-white/6 px-4 py-2.5 text-[0.78rem] font-extrabold tracking-[0.13em] text-yellow-500 uppercase">
             <span className="h-[7px] w-[7px] shrink-0 rounded-full bg-yellow-500" />
             Konsultan Pajak &amp; Akuntansi
           </p>
@@ -82,10 +82,10 @@ export function Hero() {
         </div>
 
         {/* Kolom media */}
-        <div className="relative h-[min(52vh,480px)] lg:h-auto lg:min-h-[calc(100vh-72px)]">
+        <div className="relative h-[min(52vh,480px)] lg:h-auto">
           <div
             aria-hidden="true"
-            className="absolute inset-y-0 left-0 z-1 w-full bg-[linear-gradient(180deg,rgb(10_22_40/0)_0%,rgb(10_22_40/0.55)_60%,rgb(10_22_40/0.85)_100%)] lg:w-[40%] lg:bg-[linear-gradient(90deg,rgb(10_22_40/0.95)_0%,rgb(10_22_40/0.55)_40%,rgb(10_22_40/0.15)_62%,rgb(10_22_40/0)_78%)]"
+            className="gradasi-hero-foto absolute inset-y-0 left-0 z-1 w-full lg:w-[40%]"
           />
           <Image
             src={FOTO_HERO}
@@ -96,7 +96,7 @@ export function Hero() {
             className="object-cover object-center"
           />
 
-          <div className="absolute inset-x-5 bottom-5 z-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 rounded-xl border border-white/20 bg-[rgba(12,23,54,0.92)] px-6 py-3.5 shadow-lg backdrop-blur-[14px] lg:inset-x-auto lg:right-8 lg:bottom-8 lg:flex-nowrap">
+          <div className="absolute inset-x-5 bottom-5 z-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 rounded-xl border border-white/20 bg-navy-900/92 px-6 py-3.5 shadow-lg backdrop-blur-[14px] lg:inset-x-auto lg:right-8 lg:bottom-8 lg:flex-nowrap">
             <span className="flex shrink-0 items-center gap-2 text-[0.8rem] leading-none font-extrabold text-white whitespace-nowrap">
               <Medali className="h-5.5 w-5.5 shrink-0 text-yellow-500" />
               Konsultan Berizin Resmi

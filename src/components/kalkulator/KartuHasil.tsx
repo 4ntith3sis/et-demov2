@@ -12,8 +12,8 @@ type PropsKartuHasil = {
  */
 export function KartuHasil({ title, rows, note }: PropsKartuHasil) {
   return (
-    <div role="status" aria-live="polite" className="rounded-2xl bg-navy-900 p-6 text-white shadow-[0_24px_56px_rgb(10_22_40/0.28)] md:p-7">
-      <p className="text-xs font-extrabold tracking-[0.16em] text-yellow-400 uppercase">
+    <div role="status" aria-live="polite" className="rounded-2xl bg-navy-900 p-6 text-white shadow-[0_24px_56px_color-mix(in_srgb,var(--color-brand-navy)_28%,transparent)] md:p-7">
+      <p className="text-xs font-extrabold tracking-[0.16em] text-yellow-500 uppercase">
         Ringkasan
       </p>
       <h3 className="mt-1.5 font-heading text-xl font-bold text-white">{title}</h3>

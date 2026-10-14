@@ -53,7 +53,7 @@ export function Navbar() {
   }, [terbuka]);
 
   return (
-    <header className="sticky top-0 z-1000 w-full border-b border-garis-halus bg-white/95 shadow-[0_4px_20px_rgb(11_23_42/0.05)] backdrop-blur-[14px]">
+    <header className="sticky top-0 z-1000 w-full border-b border-garis-halus bg-white/95 shadow-[0_4px_20px_color-mix(in_srgb,var(--color-brand-navy)_5%,transparent)] backdrop-blur-[14px]">
       <nav
         aria-label="Navigasi utama"
         className="mx-auto flex w-full max-w-maks items-center justify-between px-6 py-4"
@@ -79,7 +79,7 @@ export function Navbar() {
             </span>
             {/* Subjudul disembunyikan di layar sempit — kalau tidak ia membungkus
                 baris dan mendorong tinggi header. */}
-            <span className="hidden text-[0.74rem] font-bold tracking-[0.02em] text-[#E5A812] sm:block">
+            <span className="hidden text-[0.74rem] font-bold tracking-[0.02em] text-navy-900 sm:block">
               {situs.subjudul}
             </span>
           </span>
@@ -99,8 +99,10 @@ export function Navbar() {
                   href={item.href}
                   aria-current={aktif ? "page" : undefined}
                   className={cn(
-                    "tautan-nav text-[0.95rem] font-semibold transition-colors duration-300",
-                    aktif ? "text-yellow-500" : "text-navy-900 hover:text-yellow-500",
+                    "tautan-nav text-[0.95rem] transition-colors duration-300",
+                    aktif
+                      ? "font-extrabold text-navy-900"
+                      : "font-semibold text-navy-900",
                   )}
                 >
                   {item.label}
@@ -128,7 +130,7 @@ export function Navbar() {
             aria-label={terbuka ? "Tutup menu" : "Buka menu"}
             aria-expanded={terbuka}
             aria-controls="menu-mobile"
-            className="-mr-1 cursor-pointer rounded-sm p-1.5 text-navy-900 transition-colors hover:text-yellow-500 lg:hidden"
+            className="-mr-1 cursor-pointer rounded-sm p-1.5 text-navy-900 transition-colors hover:bg-netral-lat lg:hidden"
           >
             {terbuka ? <Tutup className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -154,8 +156,8 @@ export function Navbar() {
                   href={item.href}
                   aria-current={aktif ? "page" : undefined}
                   className={cn(
-                    "block border-b border-garis-halus py-3.5 text-[0.95rem] font-bold last:border-b-0",
-                    aktif ? "text-yellow-500" : "text-navy-900",
+                    "block border-b border-garis-halus py-3.5 text-[0.95rem] text-navy-900 last:border-b-0",
+                    aktif ? "bg-yellow-500/12 font-extrabold" : "font-bold",
                   )}
                 >
                   {item.label}

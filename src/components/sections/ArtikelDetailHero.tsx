@@ -20,7 +20,7 @@ export function ArtikelDetailHero({
   penulis: string;
 }) {
   return (
-    <section className="bg-navy-hero px-6 pt-[60px] text-white md:px-8">
+    <section className="bg-navy-900 px-6 pt-[clamp(48px,6vw,60px)] text-white md:px-8">
       <div className="mx-auto w-full max-w-maks">
         <nav
           aria-label="Breadcrumb"
@@ -64,7 +64,7 @@ export function ArtikelDetailHero({
 
       {/* Foto artikel saling menumpuk dengan section isi di bawah. */}
       <div className="relative z-10 mx-auto mt-9 w-full max-w-[1000px] -mb-14">
-        <div className="relative h-[260px] overflow-hidden rounded-2xl border border-white/15 bg-navy-950 shadow-xl sm:h-[340px] lg:h-[420px]">
+        <div className="relative h-[260px] overflow-hidden rounded-2xl border border-white/15 bg-navy-900 shadow-xl sm:h-[340px] lg:h-[420px]">
           <Image
             src={artikel.gambar}
             alt={artikel.judul}

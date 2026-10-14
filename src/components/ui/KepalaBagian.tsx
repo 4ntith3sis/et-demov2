@@ -28,7 +28,7 @@ export function KepalaBagian({
         <p
           className={cn(
             "mb-3 text-xs font-extrabold tracking-[0.16em] uppercase",
-            gelap ? "text-yellow-400" : "text-yellow-600",
+            gelap ? "text-yellow-500" : "text-navy-900",
           )}
         >
           {label}
@@ -38,7 +38,7 @@ export function KepalaBagian({
       <h2
         className={cn(
           "font-heading text-3xl leading-[1.18] font-extrabold tracking-[-0.02em] md:text-4xl",
-          gelap ? "text-white" : "text-navy-950",
+          gelap ? "text-white" : "text-navy-900",
         )}
       >
         {judul}
