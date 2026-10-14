@@ -63,8 +63,8 @@ async function IsiLayanan({ params }: { params: Params }) {
       <HargaLayanan paket={detail?.paket ?? []} />
       <CaraKerja />
       <Mitra />
-      <Testimoni />
       <MediaNasional />
+      <Testimoni />
       <FaqLayanan faq={detail?.faq ?? []} />
       <CTA />
     </>

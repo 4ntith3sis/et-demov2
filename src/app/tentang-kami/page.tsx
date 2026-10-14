@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 /**
  * Halaman /tentang-kami: hero bersama dengan /layanan, lalu cerita dan
- * nilai kerja, tim konsultan, bukti sosial (testimoni + media), dan CTA.
+ * nilai kerja, tim konsultan, bukti sosial (media + testimoni), dan CTA.
  */
 export default function TentangKamiPage() {
   return (
@@ -23,8 +23,8 @@ export default function TentangKamiPage() {
       <TentangHero />
       <CeritaKami />
       <TimKonsultan />
-      <Testimoni />
       <MediaNasional />
+      <Testimoni />
       <CTA />
     </>
   );

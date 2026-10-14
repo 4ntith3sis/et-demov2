@@ -26,8 +26,8 @@ export default function LayananPage() {
       <DaftarLayanan />
       <CaraKerja />
       <Mitra />
-      <Testimoni />
       <MediaNasional />
+      <Testimoni />
     </>
   );
 }
