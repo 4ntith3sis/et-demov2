@@ -53,7 +53,7 @@ export function Navbar() {
   }, [terbuka]);
 
   return (
-    <header className="sticky top-0 z-1000 w-full border-b border-garis-halus bg-white/95 shadow-[0_4px_20px_color-mix(in_srgb,var(--color-brand-navy)_5%,transparent)] backdrop-blur-[14px]">
+    <header className="sticky top-0 z-1000 w-full border-b border-garis-halus bg-white shadow-[0_4px_20px_color-mix(in_srgb,var(--color-brand-navy)_5%,transparent)]">
       <nav
         aria-label="Navigasi utama"
         className="mx-auto flex w-full max-w-maks items-center justify-between px-6 py-4"
