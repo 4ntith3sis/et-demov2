@@ -83,7 +83,7 @@ export function Layanan() {
             {layananBeranda.map((layanan) => (
               <article
                 key={layanan.slug}
-                className="group flex min-w-0 flex-[0_0_calc((100%-72px)/4)] flex-col overflow-hidden rounded-xl border border-garis bg-white shadow-sm transition-[var(--transition-base)] hover:-translate-y-2 hover:shadow-xl max-lg:flex-[0_0_calc((100%-48px)/3)] max-sm:flex-[0_0_86%]"
+                className="group flex min-w-0 flex-[0_0_calc((100%-72px)/4)] flex-col overflow-hidden rounded-xl border border-garis bg-white shadow-sm transition-[var(--transition-base)] hover:shadow-xl max-lg:flex-[0_0_calc((100%-48px)/3)] max-sm:flex-[0_0_86%]"
               >
                 <div className="relative h-[200px] w-full shrink-0 overflow-hidden border-b border-garis bg-netral-lat">
                   <Image
