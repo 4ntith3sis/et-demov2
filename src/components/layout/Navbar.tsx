@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { Menu, Tutup, Obrolan } from "@/components/ikon";
 import { Tombol } from "@/components/ui/Tombol";
 import { cn } from "@/lib/cn";
-import { logoLengkap, menuNavigasi, situs } from "@/data/situs";
+import { logoMark, menuNavigasi, situs } from "@/data/situs";
 
 /**
  * Navigasi utama: sticky, semi-transparan + blur, dengan drawer untuk mobile.
@@ -66,7 +66,7 @@ export function Navbar() {
           className="flex items-center gap-3 no-underline"
         >
           <Image
-            src={logoLengkap}
+            src={logoMark}
             alt={`Logo ${situs.nama}`}
             width={48}
             height={48}
