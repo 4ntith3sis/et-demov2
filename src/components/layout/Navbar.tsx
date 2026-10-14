@@ -130,7 +130,7 @@ export function Navbar() {
             aria-label={terbuka ? "Tutup menu" : "Buka menu"}
             aria-expanded={terbuka}
             aria-controls="menu-mobile"
-            className="-mr-1 cursor-pointer rounded-sm p-1.5 text-navy-900 transition-colors hover:bg-netral-lat lg:hidden"
+            className="-mr-2.5 cursor-pointer rounded-sm p-2.5 text-navy-900 transition-colors hover:bg-netral-lat lg:hidden"
           >
             {terbuka ? <Tutup className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
