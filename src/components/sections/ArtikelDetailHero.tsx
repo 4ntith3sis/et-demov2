@@ -42,7 +42,7 @@ export function ArtikelDetailHero({
           {artikel.kategori}
         </span>
 
-        <h1 className="mt-5 max-w-[880px] font-heading text-[clamp(1.85rem,3.6vw,2.9rem)] leading-[1.18] font-black tracking-[-0.02em] text-white text-balance">
+        <h1 className="mt-5 max-w-[880px] font-heading text-[clamp(1.85rem,3.6vw,2.9rem)] leading-[1.18] font-black tracking-[-0.02em] text-white text-balance 2xl:max-w-[960px] 2xl:text-[3.15rem]">
           {artikel.judul}
         </h1>
 
@@ -63,14 +63,14 @@ export function ArtikelDetailHero({
       </div>
 
       {/* Foto artikel saling menumpuk dengan section isi di bawah. */}
-      <div className="relative z-10 mx-auto mt-9 w-full max-w-[1000px] -mb-14">
-        <div className="relative h-[260px] overflow-hidden rounded-2xl border border-white/15 bg-navy-900 shadow-xl sm:h-[340px] lg:h-[420px]">
+      <div className="relative z-10 mx-auto mt-9 w-full max-w-[1000px] -mb-14 2xl:max-w-[1120px]">
+        <div className="relative h-[260px] overflow-hidden rounded-2xl border border-white/15 bg-navy-900 shadow-xl sm:h-[340px] lg:h-[420px] 2xl:h-[460px]">
           <Image
             src={artikel.gambar}
             alt={artikel.judul}
             fill
             priority
-            sizes="(max-width: 1200px) 100vw, 1000px"
+            sizes="(max-width: 1200px) 100vw, (max-width: 1535px) 1000px, 1120px"
             className="object-cover object-center"
           />
         </div>

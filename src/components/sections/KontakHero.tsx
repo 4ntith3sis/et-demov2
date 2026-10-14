@@ -65,7 +65,7 @@ export function KontakHero() {
             Hubungi Tim EasyTax
           </span>
 
-          <h1 className="my-[18px] font-heading text-[clamp(1.9rem,3.4vw,2.8rem)] leading-[1.15] font-black tracking-[-0.03em] text-white text-balance">
+          <h1 className="my-[18px] font-heading text-[clamp(1.9rem,3.4vw,2.8rem)] leading-[1.15] font-black tracking-[-0.03em] text-white text-balance 2xl:text-[3.1rem]">
             Mari Bicarakan Kebutuhan{" "}
             <span className="text-yellow-500">
               Perpajakan &amp; Keuangan

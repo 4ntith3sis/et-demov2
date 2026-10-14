@@ -37,7 +37,7 @@ export function LayananDetailHero({ layanan }: { layanan: LayananBeranda }) {
             Tax &amp; Accounting Service
           </p>
 
-          <h1 className="my-[18px] font-heading text-[clamp(2rem,3.2vw,2.8rem)] leading-[1.2] font-black tracking-[-0.02em] text-white">
+          <h1 className="my-[18px] font-heading text-[clamp(2rem,3.2vw,2.8rem)] leading-[1.2] font-black tracking-[-0.02em] text-white 2xl:text-[3.1rem]">
             {layanan.judul}
             <br />
             <span className="text-yellow-500">{layanan.subjudul}</span>

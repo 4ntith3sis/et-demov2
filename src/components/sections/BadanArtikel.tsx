@@ -27,7 +27,7 @@ export function BadanArtikel({
       className="bg-white pt-[84px] pb-[clamp(44px,6.4vw,64px)]"
     >
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
+        <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
           {/* Daftar isi: di atas konten pada mobile, kolom kanan pada desktop */}
           <aside className="lg:col-start-2 lg:row-start-1 lg:sticky lg:top-[92px] lg:self-start">
             <DaftarIsiArtikel headings={headings} />

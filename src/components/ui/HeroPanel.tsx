@@ -75,7 +75,7 @@ export function HeroPanel({
             ))}
           </nav>
 
-          <h1 className="my-[18px] font-heading text-[clamp(1.9rem,3.4vw,2.8rem)] leading-[1.15] font-black tracking-[-0.03em] text-white">
+          <h1 className="my-[18px] font-heading text-[clamp(1.9rem,3.4vw,2.8rem)] leading-[1.15] font-black tracking-[-0.03em] text-white 2xl:text-[3.1rem]">
             {judul}
           </h1>
 

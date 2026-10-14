@@ -57,7 +57,7 @@ export function Keunggulan() {
       aria-labelledby="keunggulan-judul"
       className="relative overflow-hidden bg-white text-teks-gelap"
     >
-      <div className="mx-auto grid w-full max-w-[1144px] grid-cols-1 gap-10 px-6 pt-[clamp(48px,5vw,68px)] pb-[clamp(48px,6.4vw,72px)] md:px-8 lg:grid-cols-[520px_1fr] lg:items-stretch lg:gap-6">
+      <div className="mx-auto grid w-full max-w-maks grid-cols-1 gap-10 px-6 pt-[clamp(48px,5vw,68px)] pb-[clamp(48px,6.4vw,72px)] md:px-8 lg:grid-cols-[minmax(0,520px)_minmax(0,760px)] lg:items-stretch lg:justify-between lg:gap-10">
         <div className="relative flex flex-col items-start justify-start">
           <div
             aria-hidden="true"

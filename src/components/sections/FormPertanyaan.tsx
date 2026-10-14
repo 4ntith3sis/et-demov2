@@ -30,7 +30,7 @@ export function FormPertanyaan() {
       className="bg-netral-lat py-[clamp(44px,6.4vw,64px)]"
     >
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+        <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
           {/* Kartu form */}
           <div className="rounded-2xl border border-garis bg-white p-6 shadow-sm sm:p-8">
             <h2

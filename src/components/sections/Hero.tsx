@@ -26,7 +26,7 @@ export function Hero() {
     >
       <div className="grid w-full grid-cols-1 items-stretch lg:grid-cols-[minmax(0,55%)_minmax(0,45%)]">
         {/* Kolom teks */}
-        <div className="z-3 flex flex-col justify-center px-6 pt-[clamp(52px,6vw,92px)] pb-[clamp(48px,5vw,72px)] md:px-8 lg:pr-9 lg:pl-[max(24px,calc((100vw-1200px)/2+24px))]">
+        <div className="z-3 flex flex-col justify-center px-6 pt-[clamp(52px,6vw,92px)] pb-[clamp(48px,5vw,72px)] md:px-8 lg:pr-9 lg:pl-[max(24px,calc((100vw_-_var(--container-maks))/2_+_24px))]">
           <p className="inline-flex w-max max-w-full items-center gap-2.5 rounded-full border border-white/16 bg-white/6 px-4 py-2.5 text-[0.78rem] font-extrabold tracking-[0.13em] text-yellow-500 uppercase">
             <span className="h-[7px] w-[7px] shrink-0 rounded-full bg-yellow-500" />
             Konsultan Pajak &amp; Akuntansi
@@ -34,7 +34,7 @@ export function Hero() {
 
           <h1
             id="hero-judul"
-            className="mt-5.5 mb-6 max-w-[640px] font-heading text-[clamp(2.6rem,4vw,3.4rem)] leading-[1.08] font-black tracking-[-0.03em] text-white uppercase"
+            className="mt-5.5 mb-6 max-w-[640px] font-heading text-[clamp(2.6rem,4vw,3.4rem)] leading-[1.08] font-black tracking-[-0.03em] text-white uppercase 2xl:max-w-[700px] 2xl:text-[3.8rem]"
           >
             Terpercaya,{" "}
             <span className="text-yellow-500">akurat &amp; bebas denda.</span>

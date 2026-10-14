@@ -79,6 +79,21 @@
   --container-maks: 1200px;
 }
 
+/* Skala container proporsional pada layar besar (audit desktop besar):
+   laptop <=1440 tetap 1200px; 1536px+ (2xl) -> 1400px; 1920px+ -> 1560px.
+   Sengaja di luar @layer supaya menimpa var tema pada breakpoint ini. */
+@media (min-width: 1536px) {
+  :root {
+    --container-maks: 1400px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --container-maks: 1560px;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
