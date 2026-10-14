@@ -69,7 +69,7 @@ export function DaftarArtikel({
             {kategoriAktif && (
               <input type="hidden" name="kategori" value={kategoriAktif} />
             )}
-            <div className="relative w-full min-w-0 sm:w-auto sm:flex-1">
+            <div className="relative min-w-0 flex-1">
               <Cari
                 aria-hidden="true"
                 className="pointer-events-none absolute top-1/2 left-[18px] h-4 w-4 -translate-y-1/2 text-teks-redup"
@@ -84,7 +84,7 @@ export function DaftarArtikel({
             </div>
             <button
               type="submit"
-              className="h-[52px] shrink-0 cursor-pointer rounded-full bg-yellow-500 px-7 text-[0.95rem] font-bold text-navy-900 shadow-kuning transition-[var(--transition-base)] hover:-translate-y-0.5"
+              className="h-[52px] shrink-0 cursor-pointer rounded-full bg-yellow-500 px-5 text-[0.95rem] font-bold text-navy-900 shadow-kuning transition-[var(--transition-base)] hover:-translate-y-0.5 sm:px-7"
             >
               Cari Artikel
             </button>
