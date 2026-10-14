@@ -21,7 +21,7 @@ function ulangi(): string[] {
 const DAFTAR = ulangi();
 
 const FAKTA = [
-  { nilai: "97%", label: "klien merekomendasikan" },
+  { nilai: "97%", label: "Kepuasan Klien" },
   { nilai: "< 1 jam", label: "respons konsultan" },
   { nilai: "BKP & IAPI", label: "sertifikasi konsultan" },
 ];

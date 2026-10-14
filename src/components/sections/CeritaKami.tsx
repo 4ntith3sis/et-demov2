@@ -52,7 +52,7 @@ export function CeritaKami() {
     <section
       id="cerita"
       aria-labelledby="cerita-judul"
-      className="bg-white py-[clamp(48px,6.5vw,88px)]"
+      className="bg-white py-[clamp(48px,6.4vw,72px)]"
     >
       <div className="mx-auto grid w-full max-w-maks grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 md:px-8">
         <div>

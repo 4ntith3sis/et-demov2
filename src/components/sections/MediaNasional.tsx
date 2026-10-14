@@ -105,7 +105,7 @@ export function MediaNasional() {
     <section
       id="media"
       aria-labelledby="media-judul"
-      className="bg-white py-[clamp(44px,6vw,64px)]"
+      className="bg-white py-[clamp(32px,4vw,48px)]"
     >
       <div className="mx-auto flex w-full max-w-maks flex-col gap-10 px-6 md:px-8 lg:flex-row lg:items-center lg:gap-16">
         <div className="flex items-center gap-5 lg:flex-1">
