@@ -21,7 +21,7 @@ export const hero = {
 
   /** Poin kepercayaan di bawah tombol. */
   poinKepercayaan: [
-    "13.000+ Klien Terlayani",
+    "13.000 Bisnis Terlayani",
     "Konsultan Berizin Resmi",
     "Garansi Kerahasiaan 100%",
   ],

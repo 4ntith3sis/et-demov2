@@ -142,9 +142,9 @@ export function Keunggulan() {
               {item.bukti && (
                 <div className="mt-3.5 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-lg bg-white px-3.5 py-2.5">
                   <p className="text-[0.82rem] leading-[1.25] font-bold text-teks-gelap">
-                    13.000+
+                    13.000
                     <br />
-                    klien terlayani
+                    Bisnis Terlayani
                   </p>
                   <span className="h-9 w-px bg-garis" />
                   <div className="min-w-0">
