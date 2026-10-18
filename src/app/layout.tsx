@@ -1,9 +1,5 @@
-import type { Metadata } from "next";
 import { Outfit, Plus_Jakarta_Sans } from "next/font/google";
 
-import { Footer } from "@/components/layout/Footer";
-import { Navbar } from "@/components/layout/Navbar";
-import { situs } from "@/data/situs";
 import "./globals.css";
 
 /* next/font: self-hosted + preload + font-display swap, tanpa request
@@ -22,16 +18,13 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: `${situs.nama} - Jasa Konsultan Pajak dan Akuntansi Perusahaan`,
-  description: situs.deskripsi,
-  openGraph: {
-    locale: "id_ID",
-    siteName: situs.nama,
-    type: "website",
-  },
-};
-
+/**
+ * Root layout: hanya <html>/<body>, font global, dan globals.css.
+ *
+ * Chrome situs publik (Navbar/Footer) serta metadata global pindah ke
+ * `src/app/(website)/layout.tsx` supaya route admin masa depan (Payload
+ * CMS di `app/(payload)`) tidak mewarisi layout maupun metadata situs.
+ */
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -39,11 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${outfit.variable} ${plusJakarta.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white text-navy-900">
-        <Navbar />
-        <main id="konten-utama" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

@@ -305,7 +305,7 @@ export const detailLayanan: DetailLayanan[] = [
         pertanyaan:
           "Apakah laporan keuangan yang dibuat bisa dipakai untuk pengajuan kredit?",
         jawaban:
-          "Bisa. Laporan kami disusun mengikuti SAK sehingga dapat menjadi lampiran pengajuan kredit, dan danZucca aid reporting pada perusahaan.",
+          "Bisa. Laporan kami disusun mengikuti SAK sehingga dapat menjadi lampiran pengajuan kredit.",
       },
       ...FAQ_SAMA,
     ],

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Cari, Jam, PanahKanan } from "@/components/ikon";
-import { artikelBeranda, type ArtikelBeranda } from "@/data/artikel";
+import type { ArtikelBeranda } from "@/data/artikel";
 
 /**
  * Daftar artikel untuk halaman /tulisan-pajak (gaya editorial).
