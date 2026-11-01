@@ -133,11 +133,11 @@
      memilih reduce-motion; isi track digandakan dua kali supaya
      translateX(-50%) menyambung tanpa lompatan. */
   .animasi-marquee {
-    animation: geser-marquee 40s linear infinite;
+    animation: geser-marquee 120s linear infinite;
   }
 
   .animasi-marquee-terbalik {
-    animation: geser-marquee 40s linear infinite reverse;
+    animation: geser-marquee 120s linear infinite reverse;
   }
 
   .animasi-marquee:hover,
@@ -166,6 +166,16 @@
   .tautan-nav:hover::after,
   .tautan-nav[aria-current="page"]::after {
     width: 100%;
+  }
+
+  /* Transisi hero yang konsisten menuju banner Statistik putih. */
+  .transisi-hero-statistik {
+    background: linear-gradient(
+      to bottom,
+      var(--color-brand-navy) 0%,
+      color-mix(in srgb, var(--color-brand-navy) 55%, var(--color-netral-putih)) 58%,
+      var(--color-netral-putih) 100%
+    );
   }
 
   /* Overlay gradasi navy pada foto hero: warna dari token brand,
@@ -201,6 +211,19 @@
   }
 }
 
+.loading-dots {
+  display: inline-block;
+  width: 1.25em;
+  overflow: hidden;
+  vertical-align: bottom;
+  animation: titik-loading 1.2s steps(4, end) infinite;
+}
+
+@keyframes titik-loading {
+  from { width: 0; }
+  to { width: 1.25em; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -208,6 +231,10 @@
 
   .animasi-marquee,
   .animasi-marquee-terbalik {
+    animation: none;
+  }
+
+  .loading-dots {
     animation: none;
   }
 }

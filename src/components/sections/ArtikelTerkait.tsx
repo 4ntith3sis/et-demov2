@@ -9,7 +9,7 @@ import type { ArtikelBeranda } from "@/data/artikel";
  * Judul & deskripsi diadaptasi dari easytax-demo (v1), gaya heading +
  * kartu mengikuti design system v2 (badge terpusat, kartu listing).
  */
-export function ArtikelTerkait({ artikel }: { artikel: ArtikelBeranda[] }) {
+export function ArtikelTerkait({ artikel, copy }: { artikel: ArtikelBeranda[]; copy?: { label?: string; title?: string; description?: string; readMore?: string } }) {
   if (artikel.length === 0) return null;
 
   return (
@@ -20,19 +20,18 @@ export function ArtikelTerkait({ artikel }: { artikel: ArtikelBeranda[] }) {
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
         <div className="mx-auto mb-10 max-w-[680px] text-center">
           <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
-            Rekomendasi Bacaan
+            {copy?.label ?? "Rekomendasi Bacaan"}
           </span>
 
           <h2
             id="artikel-terkait-judul"
             className="font-heading text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.25] font-bold text-navy-900"
           >
-            Artikel Pajak Terkait
+            {copy?.title ?? "Artikel Pajak Terkait"}
           </h2>
 
           <p className="mx-auto mt-3 max-w-[560px] text-[0.95rem] leading-[1.7] text-teks-sekunder">
-            Pelajari topik perpajakan dan akuntansi lainnya yang relevan
-            dengan kebutuhan bisnis Anda.
+            {copy?.description ?? "Pelajari topik perpajakan dan akuntansi lainnya yang relevan dengan kebutuhan bisnis Anda."}
           </p>
         </div>
 
@@ -79,7 +78,7 @@ export function ArtikelTerkait({ artikel }: { artikel: ArtikelBeranda[] }) {
                     href={`/tulisan-pajak/${a.slug}`}
                     className="inline-flex w-fit items-center gap-2 py-1 text-[0.88rem] font-bold text-navy-900 no-underline transition-[var(--transition-base)] hover:gap-3"
                   >
-                    Baca Selengkapnya
+                    {copy?.readMore ?? "Baca Selengkapnya"}
                     <PanahKanan className="h-3.5 w-3.5" />
                   </Link>
                 </div>

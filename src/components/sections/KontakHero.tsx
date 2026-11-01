@@ -7,46 +7,18 @@ import {
   Telepon,
   WhatsApp,
 } from "@/components/ikon";
-import { situs } from "@/data/situs";
+import type { ambilPengaturanSitus } from "@/lib/cms/content";
 
 /* Teks kartu diambil dari easytax-demo (v1); desain kartu berbeda:
    tampil di atas latar navy, kartu WhatsApp ditonjolkan warna kuning brand. */
-const kartuKontak = [
-  {
-    ikon: WhatsApp,
-    eyebrow: "WhatsApp · Tercepat",
-    nilai: "0811-1920-0080",
-    teks: "Respons rata-rata kurang dari 5 menit. Tersedia Senin–Jumat, 09:00–17:00 WIB.",
-    aksi: "Mulai chat WhatsApp",
-    href: situs.whatsappUrl,
-    eksternal: true,
-    sorot: true,
-  },
-  {
-    ikon: Email,
-    eyebrow: "Email · Formal",
-    nilai: "info@easytax.id",
-    teks: "Untuk pertanyaan detail, berkas pembukuan, atau dokumen legal. Pesan ditindaklanjuti tim ahli.",
-    aksi: "Kirim email",
-    href: `mailto:${situs.kontak.email}`,
-    eksternal: false,
-    sorot: false,
-  },
-  {
-    ikon: Telepon,
-    eyebrow: "Telepon · Kantor",
-    nilai: "(021) 2940-0153",
-    teks: "Hubungi kantor pusat kami. Tim operasional konsultan siap melayani pada jam kerja operasional.",
-    aksi: "Telepon kami",
-    href: "tel:02129400153",
-    eksternal: false,
-    sorot: false,
-  },
-];
-
-export function KontakHero() {
+export function KontakHero({ settings }: { settings: Awaited<ReturnType<typeof ambilPengaturanSitus>> }) {
+  const kartuKontak = settings.contact?.cards?.length ? settings.contact.cards.map((card: any, i: number) => ({ ...card, ikon: [WhatsApp, Email, Telepon][i % 3], nilai: card.value, teks: card.description, aksi: card.action, href: card.url, eksternal: card.url.startsWith("http"), sorot: card.highlight })) : [
+    { ikon: WhatsApp, eyebrow: "WhatsApp · Tercepat", nilai: "0811-1920-0080", teks: "Respons rata-rata kurang dari 5 menit. Tersedia Senin–Jumat, 09:00–17:00 WIB.", aksi: "Mulai chat WhatsApp", href: settings.whatsappUrl, eksternal: true, sorot: true },
+    { ikon: Email, eyebrow: "Email · Formal", nilai: settings.kontak.email, teks: "Untuk pertanyaan detail, berkas pembukuan, atau dokumen legal. Pesan ditindaklanjuti tim ahli.", aksi: "Kirim email", href: `mailto:${settings.kontak.email}`, eksternal: false, sorot: false },
+    { ikon: Telepon, eyebrow: "Telepon · Kantor", nilai: "(021) 2940-0153", teks: "Hubungi kantor pusat kami. Tim operasional konsultan siap melayani pada jam kerja operasional.", aksi: "Telepon kami", href: "tel:02129400153", eksternal: false, sorot: false },
+  ];
   return (
-    <section className="bg-navy-900 px-6 pt-[clamp(48px,6vw,60px)] pb-[clamp(48px,6.4vw,72px)] text-white md:px-8">
+    <section className="bg-navy-900 px-6 pt-[clamp(44px,5vw,56px)] pb-[clamp(40px,5vw,56px)] text-white md:px-8">
       <div className="mx-auto w-full max-w-maks">
         <nav
           aria-label="Breadcrumb"
@@ -62,25 +34,23 @@ export function KontakHero() {
 
         <div className="max-w-[760px]">
           <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/40 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-yellow-500 uppercase">
-            Hubungi Tim EasyTax
+            {settings.contact?.eyebrow ?? "Hubungi Tim EasyTax"}
           </span>
 
           <h1 className="my-[18px] font-heading text-[clamp(1.9rem,3.4vw,2.8rem)] leading-[1.15] font-black tracking-[-0.03em] text-white text-balance 2xl:text-[3.1rem]">
-            Mari Bicarakan Kebutuhan{" "}
-            <span className="text-yellow-500">
-              Perpajakan &amp; Keuangan
-            </span>{" "}
-            Bisnis Anda.
+            {settings.contact?.title ?? "Mari Bicarakan Kebutuhan Perpajakan & Keuangan Bisnis Anda."}
           </h1>
 
           <p className="max-w-[620px] text-[1.05rem] leading-[1.7] text-teks-terang">
-            Tim kami akan menjelaskan semua yang Anda butuhkan. Pilih cara
-            komunikasi yang paling nyaman untuk Anda.
+            {settings.contact?.description ?? "Tim kami akan menjelaskan semua yang Anda butuhkan. Pilih cara komunikasi yang paling nyaman untuk Anda."}
           </p>
+          {settings.contact?.cardHint && (
+            <p className="mt-4 text-[0.9rem] font-semibold text-yellow-500/90">{settings.contact.cardHint}</p>
+          )}
         </div>
 
         <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
-          {kartuKontak.map((k) => (
+          {kartuKontak.map((k: any) => (
             <article
               key={k.eyebrow}
               className={

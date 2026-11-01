@@ -1,28 +1,26 @@
 import Link from "next/link";
 
 import { Email, Instagram, Jam, Lokasi, TikTok, WhatsApp } from "@/components/ikon";
-import { jamOperasional } from "@/data/kontak";
-import { menuNavigasi, situs } from "@/data/situs";
+import type { ambilPengaturanSitus } from "@/lib/cms/content";
 
 /* Tahun ditulis statis: `new Date()` tidak stabil saat prerender. */
 const TAHUN = 2026;
 
-const SOSMED = [
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/easytax.id/",
-    Ikon: Instagram,
-  },
-  { label: "TikTok", href: "https://www.tiktok.com/@easytax.id", Ikon: TikTok },
-  { label: "WhatsApp", href: situs.whatsappUrl, Ikon: WhatsApp },
-];
+const IKON_SOSMED: Record<string, typeof Instagram> = {
+  instagram: Instagram,
+  tiktok: TikTok,
+  whatsapp: WhatsApp,
+};
 
 /**
  * Footer situs: identitas + deskripsi + sosmed, lalu kolom Perusahaan, Jam
  * Kantor (dari data kontak), dan Hubungi Kami, serta baris hak cipta.
  * Warna navy diseragamkan lewat globals.css.
  */
-export function Footer() {
+export function Footer({ situs }: { situs: Awaited<ReturnType<typeof ambilPengaturanSitus>> }) {
+  const jamOperasional = situs.jamOperasional;
+  const sosmed = situs.footer.socials.map((social) => ({ ...social, Ikon: IKON_SOSMED[social.name.toLowerCase()] ?? Email }));
+  const hakCipta = situs.footer.copyright.replaceAll("{tahun}", String(TAHUN)).replaceAll("{nama}", situs.nama);
   return (
     <footer className="border-t border-white/8 bg-navy-900 text-teks-terang">
       <div className="mx-auto w-full max-w-maks px-6 pt-[clamp(44px,6vw,80px)] pb-8 md:px-8">
@@ -45,19 +43,17 @@ export function Footer() {
             </Link>
 
             <p className="mt-5 text-[0.92rem] leading-[1.7]">
-              Jasa konsultan pajak dan akuntansi perusahaan terpercaya di
-              Indonesia. Membantu bisnis Anda tumbuh dengan kepatuhan pajak
-              yang optimal.
+              {situs.footer.description}
             </p>
 
             <ul className="mt-6 flex items-center gap-3">
-              {SOSMED.map(({ label, href, Ikon }) => (
-                <li key={label}>
+              {sosmed.map(({ name, url, Ikon }) => (
+                <li key={name}>
                   <a
-                    href={href}
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={label}
+                    aria-label={name}
                     className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-white/6 text-teks-terang transition-[var(--transition-base)] hover:-translate-y-0.75 hover:bg-yellow-500 hover:text-navy-900"
                   >
                     <Ikon className="h-4 w-4" />
@@ -73,16 +69,13 @@ export function Footer() {
               id="footer-perusahaan"
               className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-500"
             >
-              Perusahaan
+              {situs.footer.companyTitle}
             </h4>
             <ul className="mt-5 space-y-3">
-              {menuNavigasi
-                .filter((item) => item.href !== "/")
-                .slice(0, 4)
-                .map((item) => (
-                  <li key={item.href}>
+              {situs.footer.companyLinks.map((item) => (
+                  <li key={`${item.label}-${item.url}`}>
                     <Link
-                      href={item.href}
+                      href={item.url}
                       className="inline-block py-1 text-[0.92rem] text-teks-terang no-underline transition-[var(--transition-base)] hover:translate-x-1 hover:text-yellow-500"
                     >
                       {item.label}
@@ -95,7 +88,7 @@ export function Footer() {
           {/* Jam operasional */}
           <div>
             <h4 className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-500">
-              Jam Kantor
+              {situs.footer.hoursTitle}
             </h4>
             <ul className="mt-5 space-y-3.5">
               {jamOperasional.map((item) => (
@@ -113,7 +106,7 @@ export function Footer() {
           {/* Kontak */}
           <div>
             <h4 className="relative pb-2.5 font-heading text-[1.15rem] font-bold text-white after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-[30px] after:bg-yellow-500">
-              Hubungi Kami
+              {situs.footer.contactTitle}
             </h4>
             <ul className="mt-5 space-y-4">
               <li className="flex items-start gap-3 text-[0.92rem]">
@@ -145,9 +138,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/8 pt-6 text-[0.85rem]">
-          <p className="text-white/55">
-            &copy; {TAHUN} {situs.nama}. All Rights Reserved.
-          </p>
+          <p className="text-white/55">{hakCipta}</p>
         </div>
       </div>
     </footer>

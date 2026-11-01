@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { Jam, Lokasi, Telepon } from "@/components/ikon";
-import { kantor, jamOperasional } from "@/data/kontak";
+import type { Kantor } from "@/data/kontak";
 
 /**
  * Section "Kantor Kami" untuk halaman /kontak.
@@ -10,9 +10,7 @@ import { kantor, jamOperasional } from "@/data/kontak";
  * sengaja-designed sebagai satu panel besar: foto gedung di kiri, detail
  * alamat dan jam operasional di kanan, tanpa grid kantor yang kosong.
  */
-export function LokasiKantor() {
-  const [kantorPusat] = kantor;
-
+export function LokasiKantor({ kantor, copy }: { kantor: (Kantor & { jamOperasional?: { hari: string; jam: string }[] })[]; copy?: { label?: string; title?: string; description?: string } }) {
   return (
     <section
       id="lokasi"
@@ -20,29 +18,29 @@ export function LokasiKantor() {
       className="bg-white py-[clamp(44px,6.4vw,64px)]"
     >
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
-        {/* Judul + deskripsi dalam satu blok sejajar kiri, supaya paragraf
-            tidak mengambang terpisah di pojok kanan. */}
+        {/* Judul dan deskripsi berada di atas panel lokasi. */}
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
-            Lokasi Kantor
+            {copy?.label ?? "Lokasi Kantor"}
           </span>
 
           <h2
             id="lokasi-judul"
             className="mt-6 max-w-[560px] font-heading text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.2] font-bold tracking-[-0.03em] text-navy-900 text-balance"
           >
-            Kunjungi kantor kami di Cilandak, Jakarta Selatan
+            {copy?.title ?? "Kunjungi kantor kami di Cilandak, Jakarta Selatan"}
           </h2>
 
           <p className="mt-4 max-w-[560px] text-[0.95rem] leading-[1.7] text-teks-sekunder">
-            Konsultasi awal bisa dilakukan langsung di kantor pada jam kerja,
-            atau lewat WhatsApp bila Anda sedang di luar kota.
+            {copy?.description ?? "Konsultasi awal bisa dilakukan langsung di kantor pada jam kerja, atau lewat WhatsApp bila Anda sedang di luar kota."}
           </p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-          {/* Foto gedung */}
-          <div className="relative h-[320px] overflow-hidden rounded-2xl bg-netral-lat shadow-sm sm:h-[380px]">
+        <div className="mt-10">
+          {kantor.map((kantorPusat) => (
+          <div key={kantorPusat.nama} className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-[1.2fr_1fr]">
+          {/* Foto gedung di kiri */}
+          <div className="relative h-[320px] overflow-hidden rounded-2xl bg-netral-lat shadow-sm sm:h-[420px] lg:h-full lg:min-h-[530px]">
             <Image
               src={kantorPusat.gambar}
               alt={`Gedung ${kantorPusat.nama}`}
@@ -55,7 +53,7 @@ export function LokasiKantor() {
             </span>
           </div>
 
-          {/* Detail */}
+          {/* Detail dan jam operasional di kanan */}
           <div className="flex flex-col gap-4">
             <div className="rounded-2xl border border-garis bg-netral-lat p-6">
               <h3 className="font-heading text-[1.1rem] font-bold tracking-[-0.02em] text-navy-900">
@@ -94,7 +92,7 @@ export function LokasiKantor() {
               </div>
 
               <dl className="mt-4 divide-y divide-garis-halus">
-                {jamOperasional.map((j) => (
+                {(kantorPusat.jamOperasional ?? []).map((j) => (
                   <div
                     key={j.hari}
                     className="flex items-center justify-between gap-4 py-2.5 text-[0.9rem]"
@@ -108,6 +106,8 @@ export function LokasiKantor() {
               </dl>
             </div>
           </div>
+          </div>
+          ))}
         </div>
       </div>
     </section>

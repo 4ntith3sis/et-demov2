@@ -28,8 +28,9 @@ type PropsHeroPanel = {
   tombolUtama: TombolHero;
   tombolSekunder?: TombolHero;
   bukti?: string[];
-  gambar: { src: string; alt: string };
+  gambar: { src: string; alt: string; posisi?: string };
   kartu?: KartuHero[];
+  className?: string;
 };
 
 /**
@@ -48,14 +49,15 @@ export function HeroPanel({
   bukti = [],
   gambar,
   kartu = [],
+  className = "",
 }: PropsHeroPanel) {
   return (
-    <section className="border-b border-white/10 bg-navy-900 px-6 pt-[clamp(48px,6vw,60px)] pb-[clamp(48px,6.4vw,70px)] text-white md:px-8">
-      <div className="mx-auto grid w-full max-w-maks grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+    <section className={`relative overflow-hidden border-b border-white/10 bg-navy-900 px-6 pt-[clamp(44px,5vw,56px)] pb-24 text-white md:px-8 ${className}`}>
+      <div className="relative z-10 mx-auto grid w-full max-w-maks grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
         <div>
           <nav
             aria-label="Breadcrumb"
-            className="mb-4 flex flex-wrap items-center gap-2 text-[0.9rem] text-teks-terang"
+            className={`mb-4 flex flex-wrap items-center gap-2 text-[0.9rem] text-teks-terang`}
           >
             {remah.map((r, i) => (
               <span key={r.label} className="flex items-center gap-2">
@@ -107,7 +109,7 @@ export function HeroPanel({
           </div>
 
           {bukti.length > 0 && (
-            <ul className="mt-[18px] flex flex-wrap items-center gap-x-9 gap-y-3">
+            <ul className={`mt-[18px] flex flex-wrap items-center gap-x-9 gap-y-3 ${className.includes("hero-layanan-besar") ? "lg:gap-x-5 lg:text-sm" : ""}`}>
               {bukti.map((item) => (
                 <li
                   key={item}
@@ -128,7 +130,7 @@ export function HeroPanel({
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 45vw"
-            className="object-cover object-center"
+            className={`object-cover ${gambar.posisi ?? "object-center"}`}
           />
 
           {kartu.map((k) => (
@@ -151,6 +153,10 @@ export function HeroPanel({
           ))}
         </div>
       </div>
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-0 bottom-0 z-0 h-24 ${className.includes("tanpa-gradasi") ? "hidden" : "transisi-hero-statistik"}`}
+      />
     </section>
   );
 }

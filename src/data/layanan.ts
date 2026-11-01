@@ -10,26 +10,18 @@ export interface LayananBeranda {
   subjudul: string;
   ringkasan: string;
   gambar: string;
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export const layananBeranda: LayananBeranda[] = [
-  {
-    slug: "restitusi-pajak",
-    judul: "Restitusi Pajak",
-    subjudul: "Proses Cepat & Sesuai Ketentuan",
-    ringkasan:
-      "Pendampingan proses restitusi pajak untuk membantu menyiapkan dokumen, memeriksa kelengkapan data, dan mendampingi proses pengajuan pengembalian kelebihan pembayaran pajak sesuai kebutuhan Anda.",
-    gambar:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80",
-  },
   {
     slug: "laporan-spt",
     judul: "Laporan SPT",
     subjudul: "Bebas Denda & Akurat",
     ringkasan:
       "EasyTax membantu perhitungan, penyusunan, dan e-Filing SPT Tahunan PPh Badan serta SPT Orang Pribadi dengan bukti lapor resmi DJP.",
-    gambar:
-      "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?auto=format&fit=crop&w=1000&q=80",
+    gambar: "/images/official/seed-layanan-laporan-spt.webp",
   },
   {
     slug: "pengurusan-pkp",
@@ -37,8 +29,7 @@ export const layananBeranda: LayananBeranda[] = [
     subjudul: "Cepat & 100% Lolos Survei KPP",
     ringkasan:
       "Bantu proses pengukuhan PKP, aktivasi akun e-Faktur, sertifikat elektronik DJP, dan pembekalan teknis faktur pajak.",
-    gambar:
-      "https://images.unsplash.com/photo-1664575602554-2087b04935a5?auto=format&fit=crop&w=1000&q=80",
+    gambar: "/images/official/seed-layanan-pengurusan-pkp-1280x720.webp",
   },
   {
     slug: "laporan-perpajakan-keuangan",
@@ -46,7 +37,6 @@ export const layananBeranda: LayananBeranda[] = [
     subjudul: "Lebih Rapi, Akurat & Aman",
     ringkasan:
       "EasyTax membantu memahami, mengelola, dan menyusun laporan keuangan serta pelaporan pajak secara tepat waktu.",
-    gambar:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80",
+    gambar: "/images/official/seed-layanan-laporan-perpajakan-keuangan.webp",
   },
 ];

@@ -12,6 +12,7 @@ export interface PaketLayanan {
   deskripsi: string;
   harga: string;
   satuan?: string;
+  diskonPersen?: number;
   fitur: string[];
 }
 
@@ -22,6 +23,8 @@ export interface FaqLayanan {
 
 export interface DetailLayanan {
   slug: string;
+  /** Keunggulan singkat yang ditampilkan sebagai badge pada hero layanan. */
+  keunggulan: string[];
   paket: PaketLayanan[];
   faq: FaqLayanan[];
 }
@@ -51,76 +54,12 @@ const FAQ_SAMA: FaqLayanan[] = [
 
 export const detailLayanan: DetailLayanan[] = [
   {
-    slug: "restitusi-pajak",
-    paket: [
-      {
-        nama: "Paket Restitusi Basic",
-        deskripsi:
-          "Cocok untuk kebutuhan restitusi dengan dokumen dan transaksi yang relatif sederhana.",
-        harga: "Rp 2.500.000",
-        satuan: "/paket",
-        fitur: [
-          "Pemeriksaan kelengkapan dokumen",
-          "Review data perpajakan",
-          "Pendampingan persiapan pengajuan",
-          "Konsultasi dasar restitusi",
-        ],
-      },
-      {
-        nama: "Paket Restitusi Standard",
-        deskripsi:
-          "Pendampingan restitusi yang lebih menyeluruh untuk dokumen yang lebih kompleks.",
-        harga: "Rp 5.000.000",
-        satuan: "/paket",
-        fitur: [
-          "Review dokumen dan data perpajakan",
-          "Pemeriksaan transaksi terkait",
-          "Persiapan dokumen restitusi",
-          "Pendampingan proses pengajuan",
-          "Konsultasi selama proses",
-        ],
-      },
-      {
-        nama: "Paket Restitusi Professional",
-        deskripsi:
-          "Pemeriksaan dan dokumentasi yang lebih mendalam untuk proses restitusi.",
-        harga: "Rp 8.000.000",
-        satuan: "/paket",
-        fitur: [
-          "Review komprehensif dokumen perpajakan",
-          "Analisis data dan transaksi",
-          "Persiapan dokumen pendukung",
-          "Pendampingan proses restitusi",
-          "Konsultasi dan monitoring proses",
-        ],
-      },
-      {
-        nama: "Paket Restitusi Corporate",
-        deskripsi:
-          "Pendampingan end-to-end untuk volume dokumen yang besar dan kompleks.",
-        harga: "Rp 12.500.000",
-        satuan: "/paket",
-        fitur: [
-          "Review menyeluruh data perpajakan",
-          "Analisis dokumen dan transaksi",
-          "Persiapan dokumen pendukung",
-          "Pendampingan proses restitusi",
-          "Monitoring dan konsultasi intensif",
-        ],
-      },
-    ],
-    faq: [
-      {
-        pertanyaan:
-          "Berapa lama proses pengajuan restitusi sampai dicairkan?",
-        jawaban:
-          "Umumnya 1–3 bulan sejak pengajuan, tergantung proses verifikasi DJP. EasyTax menyiapkan dokumen secara lengkap agar verifikasi tidak berputar.",
-      },
-      ...FAQ_SAMA,
-    ],
-  },
-  {
     slug: "laporan-spt",
+    keunggulan: [
+      "Bebas denda & akurat",
+      "Bukti lapor resmi DJP",
+      "Pendampingan konsultan BKP",
+    ],
     paket: [
       {
         nama: "SPT Tahunan Badan",
@@ -186,6 +125,11 @@ export const detailLayanan: DetailLayanan[] = [
   },
   {
     slug: "pengurusan-pkp",
+    keunggulan: [
+      "Pendampingan survei KPP",
+      "Aktivasi e-Faktur",
+      "Proses lebih terarah",
+    ],
     paket: [
       {
         nama: "Pengurusan PKP Dasar",
@@ -249,6 +193,11 @@ export const detailLayanan: DetailLayanan[] = [
   },
   {
     slug: "laporan-perpajakan-keuangan",
+    keunggulan: [
+      "Laporan rapi & tepat waktu",
+      "Rekonsiliasi fiskal",
+      "Pendampingan audit pajak",
+    ],
     paket: [
       {
         nama: "Laporan Pajak Bulanan",
@@ -305,7 +254,7 @@ export const detailLayanan: DetailLayanan[] = [
         pertanyaan:
           "Apakah laporan keuangan yang dibuat bisa dipakai untuk pengajuan kredit?",
         jawaban:
-          "Bisa. Laporan kami disusun mengikuti SAK sehingga dapat menjadi lampiran pengajuan kredit.",
+          "Bisa. Laporan kami disusun mengikuti SAK sehingga dapat menjadi lampiran pengajuan kredit, dan danZucca aid reporting pada perusahaan.",
       },
       ...FAQ_SAMA,
     ],

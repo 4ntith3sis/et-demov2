@@ -1,53 +1,43 @@
 /**
- * Logo mitra untuk carousel di beranda.
- * Aset disalin dari easytax-demo (v1) — public/images/clients/*.jpg.
- * "dev-logo.png" dari v1 sengaja dibuang karena hanya placeholder.
+ * Aset logo resmi EasyTax dari https://easytax.id.
+ * Dipakai sebagai sumber data bersama untuk seluruh carousel Mitra.
  */
-export const logoMitra: string[] = [
-  "vidichi.jpg",
-  "tantri.jpg",
-  "sumber-aneka-wangi.jpg",
-  "satoshi.jpg",
-  "power-computerindo.jpg",
-  "pabriek-kuweh.jpg",
-  "oseal.jpg",
-  "moonbow.jpg",
-  "kms.jpg",
-  "kafeel-netz.jpg",
-  "javarudraksha.jpg",
-  "happyeats.jpg",
-  "guri-senbei.jpg",
-  "gmk-door.jpg",
-  "dewa-rackindo.jpg",
-  "daingsuper.jpg",
-  "callme.jpg",
-  "beeskin.jpg",
-  "artave.jpg",
-  "arava-tour.jpg",
-  "akiha.jpg",
-];
+export const logoMitra = [
+  "pt-amerta-berkah-mandiri.png",
+  "cloud-plus.png",
+  "pt-samudra-karsa-raya.png",
+  "cv-inusi-solusindo.png",
+  "cv-sinar-listrik-indonesia.png",
+  "pt-elanus-international-resources.png",
+  "pan-education-training-center.png",
+] as const;
 
-/** Teks alternatif yang lebih rapi daripada nama file. */
+export const logoSupportedBy = [
+  "bca.png",
+  "bsi.png",
+  "mekari.png",
+  "ocbc.png",
+  "permata-bank.png",
+  "privy.png",
+  "everpro.png",
+  "jne.png",
+] as const;
+
+/** Teks alternatif logo resmi. */
 export const namaMitra: Record<string, string> = {
-  "vidichi.jpg": "Vidichi",
-  "tantri.jpg": "Tantri",
-  "sumber-aneka-wangi.jpg": "Sumber Aneka Wangi",
-  "satoshi.jpg": "Satoshi",
-  "power-computerindo.jpg": "Power Computerindo",
-  "pabriek-kuweh.jpg": "Pabriek Kuweh",
-  "oseal.jpg": "Oseal",
-  "moonbow.jpg": "Moonbow",
-  "kms.jpg": "KMS",
-  "kafeel-netz.jpg": "Kafeel Netz",
-  "javarudraksha.jpg": "Javarudraksha",
-  "happyeats.jpg": "HappyEats",
-  "guri-senbei.jpg": "Guri Senbei",
-  "gmk-door.jpg": "GMK Door",
-  "dewa-rackindo.jpg": "Dewa Rackindo",
-  "daingsuper.jpg": "Daing Super",
-  "callme.jpg": "Callme",
-  "beeskin.jpg": "Beeskin",
-  "artave.jpg": "Artave",
-  "arava-tour.jpg": "Arava Tour",
-  "akiha.jpg": "Akiha",
+  "pt-amerta-berkah-mandiri.png": "PT Amerta Berkah Mandiri",
+  "cloud-plus.png": "Cloud Plus",
+  "pt-samudra-karsa-raya.png": "PT Samudra Karsa Raya",
+  "cv-inusi-solusindo.png": "CV Inusi Solusindo",
+  "cv-sinar-listrik-indonesia.png": "CV Sinar Listrik Indonesia",
+  "pt-elanus-international-resources.png": "PT Elanus International Resources",
+  "pan-education-training-center.png": "PAN Education & Training Center",
+  "bca.png": "BCA",
+  "bsi.png": "Bank Syariah Indonesia",
+  "mekari.png": "Mekari",
+  "ocbc.png": "OCBC",
+  "permata-bank.png": "Permata Bank",
+  "privy.png": "Privy",
+  "everpro.png": "Everpro",
+  "jne.png": "JNE",
 };

@@ -14,7 +14,13 @@ import type { HeadingToc } from "@/lib/artikel/toc";
  * easytax-demo; tampilan memakai gaya v2 (chip ikon, nomor urut kuning,
  * sorotan aktif kuning).
  */
-export function DaftarIsiArtikel({ headings }: { headings: HeadingToc[] }) {
+export function DaftarIsiArtikel({
+  headings,
+  ringkasan,
+}: {
+  headings: HeadingToc[];
+  ringkasan: string;
+}) {
   const [aktif, setAktif] = useState<string | null>(null);
   const [terbuka, setTerbuka] = useState(false);
 
@@ -103,6 +109,15 @@ export function DaftarIsiArtikel({ headings }: { headings: HeadingToc[] }) {
         </p>
         {daftar("daftar-isi-desktop")}
       </nav>
+
+      <aside className="mt-4 hidden rounded-2xl border border-garis bg-white p-5 shadow-sm lg:block">
+        <p className="mb-2 font-heading text-[0.88rem] font-extrabold text-navy-900">
+          Ringkasan Artikel
+        </p>
+        <p className="text-[0.86rem] leading-[1.65] text-teks-sekunder">
+          {ringkasan}
+        </p>
+      </aside>
 
       {/* Mobile: toggle di atas konten */}
       <div className="lg:hidden">

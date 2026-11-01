@@ -7,10 +7,8 @@ import type { ArtikelBeranda } from "@/data/artikel";
 /**
  * Hero halaman detail artikel /tulisan-pajak/[slug].
  *
- * Berbeda dari easytax-demo (v1) yang memakai header terpusat di latar
- * putih: di sini judul dan meta di atas latar navy, lalu foto artikel
- * di bawahnya saling menumpuk dengan section isi (foto menjorok ke
- * bawah melewati batas hero).
+ * Header artikel terpusat di latar putih dengan foto lebar, mengikuti
+ * susunan editorial referensi dan mempertahankan identitas EasyTax.
  */
 export function ArtikelDetailHero({
   artikel,
@@ -20,11 +18,11 @@ export function ArtikelDetailHero({
   penulis: string;
 }) {
   return (
-    <section className="bg-navy-900 px-6 pt-[clamp(48px,6vw,60px)] text-white md:px-8">
+    <section className="bg-white px-6 pt-8 pb-8 text-navy-900 md:px-8 md:pt-10">
       <div className="mx-auto w-full max-w-maks">
         <nav
           aria-label="Breadcrumb"
-          className="mb-5 flex flex-wrap items-center gap-2 text-[0.88rem] text-teks-terang"
+          className="mb-6 flex flex-wrap items-center gap-2 text-[0.88rem] text-teks-redup"
         >
           <Link href="/" className="flex items-center gap-2 no-underline">
             <Rumah className="h-3.5 w-3.5" />
@@ -35,36 +33,37 @@ export function ArtikelDetailHero({
             Artikel &amp; Edukasi Perpajakan
           </Link>
           <span aria-hidden="true">&gt;</span>
-          <span className="font-bold text-yellow-500">{artikel.kategori}</span>
+          <span className="font-bold text-navy-900">{artikel.kategori}</span>
         </nav>
 
-        <span className="inline-flex items-center rounded-full bg-yellow-500 px-3.5 py-1.5 text-[0.75rem] font-extrabold tracking-[0.05em] text-navy-900 uppercase shadow-sm">
+        <div className="mx-auto max-w-[1000px] text-center 2xl:max-w-[1120px]">
+        <span className="inline-flex items-center rounded-full border border-yellow-500/30 bg-yellow-500/10 px-3 py-1 text-[0.7rem] font-extrabold tracking-[0.05em] text-navy-900 uppercase">
           {artikel.kategori}
         </span>
 
-        <h1 className="mt-5 max-w-[880px] font-heading text-[clamp(1.85rem,3.6vw,2.9rem)] leading-[1.18] font-black tracking-[-0.02em] text-white text-balance 2xl:max-w-[960px] 2xl:text-[3.15rem]">
+        <h1 className="mx-auto mt-3 max-w-[900px] font-heading text-[clamp(1.9rem,3.5vw,3rem)] leading-[1.15] font-black tracking-[-0.03em] text-navy-900 text-balance 2xl:text-[3.25rem]">
           {artikel.judul}
         </h1>
 
-        <ul className="mt-6 flex flex-wrap items-center gap-3">
-          <li className="flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-[0.84rem] text-teks-terang">
-            <Pengguna className="h-4 w-4 text-yellow-500" />
+        <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          <li className="flex items-center gap-2 text-[0.86rem] text-teks-redup">
+            <Pengguna className="h-4 w-4 text-navy-900" />
             {penulis}
           </li>
-          <li className="flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-[0.84rem] text-teks-terang">
-            <Dokumen className="h-4 w-4 text-yellow-500" />
+          <li className="flex items-center gap-2 text-[0.86rem] text-teks-redup">
+            <Dokumen className="h-4 w-4 text-navy-900" />
             {artikel.tanggal}
           </li>
-          <li className="flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-[0.84rem] text-teks-terang">
-            <Jam className="h-4 w-4 text-yellow-500" />
+          <li className="flex items-center gap-2 text-[0.86rem] text-teks-redup">
+            <Jam className="h-4 w-4 text-navy-900" />
             {artikel.waktuBaca}
           </li>
         </ul>
+        </div>
       </div>
 
-      {/* Foto artikel saling menumpuk dengan section isi di bawah. */}
-      <div className="relative z-10 mx-auto mt-9 w-full max-w-[1000px] -mb-14 2xl:max-w-[1120px]">
-        <div className="relative h-[260px] overflow-hidden rounded-2xl border border-white/15 bg-navy-900 shadow-xl sm:h-[340px] lg:h-[420px] 2xl:h-[460px]">
+      <div className="relative mx-auto mt-6 w-full max-w-[1000px] 2xl:max-w-[1120px]">
+        <div className="relative h-[240px] overflow-hidden rounded-xl bg-netral-lat sm:h-[340px] lg:h-[420px] 2xl:h-[460px]">
           <Image
             src={artikel.gambar}
             alt={artikel.judul}

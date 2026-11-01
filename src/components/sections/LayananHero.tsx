@@ -1,43 +1,50 @@
 import { Pengguna } from "@/components/ikon";
 import { HeroPanel } from "@/components/ui/HeroPanel";
-import { situs } from "@/data/situs";
+import type { ambilPengaturanSitus } from "@/lib/cms/content";
 
 /** Hero halaman /layanan — memakai panel hero bersama. */
-export function LayananHero() {
+export function LayananHero({ settings }: { settings: Awaited<ReturnType<typeof ambilPengaturanSitus>> }) {
+  const content = settings.servicesPage;
+  const badges = content?.badges?.length ? content.badges : [
+    { value: "+22%", label: "Efisiensi Pajak Meningkat" },
+    { value: "300+ Industri", label: "yang Dilayani" },
+  ];
   return (
     <HeroPanel
+      className="border-b-0"
       remah={[
         { label: "Beranda", href: "/" },
         { label: "Layanan" },
       ]}
       judul={
         <>
-          Solusi Lengkap Perpajakan &amp;{" "}
-          <span className="text-yellow-500">Finansial untuk Bisnis Anda</span>
+          {content?.titleStart ?? "Solusi Lengkap Perpajakan &"}{" "}
+          <span className="text-yellow-500">{content?.titleHighlight ?? "Finansial untuk Bisnis Anda"}</span>
         </>
       }
-      deskripsi="Mulai dari pelaporan SPT tahunan, pembukuan bulanan, hingga pendampingan audit dan pengurusan PKP. Dikelola langsung oleh konsultan pajak berizin resmi (BKP) dan berpengalaman menangani berbagai industri di Indonesia."
+      deskripsi={content?.description ?? "Mulai dari pelaporan SPT tahunan, pembukuan bulanan, hingga pendampingan audit dan pengurusan PKP. Dikelola langsung oleh konsultan pajak berizin resmi (BKP) dan berpengalaman menangani berbagai industri di Indonesia."}
       tombolUtama={{
-        label: "Konsultasi Gratis",
-        href: situs.whatsappUrl,
+        label: settings.navCtaLabel,
+        href: settings.whatsappUrl,
         eksternal: true,
       }}
-      tombolSekunder={{ label: "Eksplorasi Layanan", href: "#katalog-layanan" }}
-      bukti={["Pembukuan Sesuai SAK", "Konsultan Berizin Resmi"]}
+      tombolSekunder={{ label: content?.ctaSecondary ?? "Eksplorasi Layanan", href: "#katalog-layanan" }}
+      bukti={content?.proofPoints?.length ? content.proofPoints : ["Pembukuan Sesuai SAK", "Konsultan Berizin Resmi"]}
       gambar={{
-        src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1000&q=80",
+        src: content?.photo ?? "/images/hero/easytax-resmi.webp",
         alt: "Layanan Konsultan Pajak EasyTax",
+        posisi: "object-[58%_center]",
       }}
       kartu={[
         {
-          nilai: "+22%",
-          label: "Efisiensi Pajak Meningkat",
+          nilai: badges[0]?.value ?? "+22%",
+          label: badges[0]?.label ?? "Efisiensi Pajak Meningkat",
           ikon: <Pengguna className="h-5 w-5" />,
           posisi: "kiri-atas",
         },
         {
-          nilai: "300+ Industri",
-          label: "yang Dilayani",
+          nilai: badges[1]?.value ?? "300+ Industri",
+          label: badges[1]?.label ?? "yang Dilayani",
           ikon: <Pengguna className="h-5 w-5" />,
           posisi: "kanan-bawah",
         },

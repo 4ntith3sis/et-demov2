@@ -6,14 +6,14 @@ import { useEffect, useRef, useState } from "react";
 
 import { Jam, PanahKanan, PanahKiri } from "@/components/ikon";
 import { Tombol } from "@/components/ui/Tombol";
-import { artikelBeranda, type ArtikelBeranda } from "@/data/artikel";
+import type { ArtikelBeranda } from "@/data/artikel";
 
 /**
  * Section Artikel di beranda: kolom kiri berisi judul + deskripsi + tombol
  * "Lihat Semua Artikel", kolom kanan carousel kartu artikel (2 per tampilan
  * di sm+, 1 di mobile) dengan tombol navigasi di tepi thumbnail 16:9.
  */
-export function Artikel() {
+export function Artikel({ artikelBeranda, copy }: { artikelBeranda: ArtikelBeranda[]; copy?: { title?: string; description?: string; allLabel?: string } }) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const [bisaKiri, setBisaKiri] = useState(false);
   const [bisaKanan, setBisaKanan] = useState(false);
@@ -66,13 +66,11 @@ export function Artikel() {
               aria-hidden="true"
               className="absolute top-[0.12em] left-0 h-[1.05em] w-1 rounded-[3px] bg-yellow-500"
             />
-            Jelajahi Artikel dan Wawasan Kami
+            {copy?.title ?? "Jelajahi Artikel dan Wawasan Kami"}
           </h2>
 
           <p className="mt-7 max-w-[440px] text-[1.05rem] leading-[1.7] text-teks-sekunder">
-            Temukan informasi terbaru, panduan perpajakan, dan wawasan praktis
-            untuk membantu Anda memahami serta mengelola kebutuhan pajak dengan
-            lebih baik.
+            {copy?.description ?? "Temukan informasi terbaru, panduan perpajakan, dan wawasan praktis untuk membantu Anda memahami serta mengelola kebutuhan pajak dengan lebih baik."}
           </p>
 
           <Tombol
@@ -82,7 +80,7 @@ export function Artikel() {
             ikonKanan={<PanahKanan className="h-4 w-4" />}
             className="mt-8 rounded-full py-3.5 text-[1rem] shadow-none"
           >
-            Lihat Semua Artikel
+            {copy?.allLabel ?? "Lihat Semua Artikel"}
           </Tombol>
         </div>
 

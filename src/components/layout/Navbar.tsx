@@ -5,10 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Menu, Tutup, Obrolan } from "@/components/ikon";
+import { Menu, Obrolan, PanahBawah, Tutup } from "@/components/ikon";
 import { Tombol } from "@/components/ui/Tombol";
 import { cn } from "@/lib/cn";
-import { logoMark, menuNavigasi, situs } from "@/data/situs";
+import type { ambilPengaturanSitus } from "@/lib/cms/content";
 
 /**
  * Navigasi utama: sticky, semi-transparan + blur, dengan drawer untuk mobile.
@@ -25,14 +25,36 @@ import { logoMark, menuNavigasi, situs } from "@/data/situs";
  *    tidak ikut ter-scroll.
  *  - Logo memakai next/image, bukan <img> mentah.
  */
-export function Navbar() {
+export function Navbar({ situs }: { situs: Awaited<ReturnType<typeof ambilPengaturanSitus>> }) {
+  const menuNavigasi = situs.menuNavigasi;
+  const logoMark = situs.logoMark;
+  const layananBeranda = situs.menuLayanan;
   const pathname = usePathname();
   const [terbuka, setTerbuka] = useState(false);
+  const [layananTerbuka, setLayananTerbuka] = useState(false);
 
   /* Tutup drawer setiap kali navigasi berpindah halaman. */
   useEffect(() => {
     setTerbuka(false);
+    setLayananTerbuka(false);
   }, [pathname]);
+
+  const kolomLayanan =
+    layananBeranda.length <= 3
+      ? "lg:grid-cols-1"
+      : layananBeranda.length === 4
+        ? "lg:grid-cols-2"
+        : layananBeranda.length <= 9
+          ? "lg:grid-cols-3"
+          : "lg:grid-cols-4";
+  const lebarDropdown =
+    layananBeranda.length <= 3
+      ? "w-[min(320px,calc(100vw-32px))]"
+      : layananBeranda.length === 4
+        ? "w-[min(440px,calc(100vw-32px))]"
+        : layananBeranda.length <= 9
+          ? "w-[min(580px,calc(100vw-32px))]"
+          : "w-[min(720px,calc(100vw-32px))]";
 
   /* Kunci scroll + tutup drawer saat Escape ditekan. */
   useEffect(() => {
@@ -53,7 +75,7 @@ export function Navbar() {
   }, [terbuka]);
 
   return (
-    <header className="sticky top-0 z-1000 w-full border-b border-garis-halus bg-white shadow-[0_4px_20px_color-mix(in_srgb,var(--color-brand-navy)_5%,transparent)]">
+    <header className="relative sticky top-0 z-1000 w-full border-b border-garis-halus bg-white shadow-[0_4px_20px_color-mix(in_srgb,var(--color-brand-navy)_5%,transparent)]">
       <nav
         aria-label="Navigasi utama"
         className="mx-auto flex w-full max-w-maks items-center justify-between px-6 py-4"
@@ -93,6 +115,69 @@ export function Navbar() {
                 ? pathname === "/"
                 : pathname.startsWith(item.href);
 
+            if (item.href === "/layanan") {
+              return (
+                <li key={item.href} className="relative">
+                  <button
+                    type="button"
+                    aria-expanded={layananTerbuka}
+                    aria-controls="dropdown-layanan"
+                    onClick={() => setLayananTerbuka((nilai) => !nilai)}
+                    className={cn(
+                      "tautan-nav flex cursor-pointer items-center gap-1.5 text-[0.95rem] transition-colors duration-300",
+                      aktif || layananTerbuka
+                        ? "font-extrabold text-navy-900"
+                        : "font-semibold text-navy-900",
+                    )}
+                  >
+                    {item.label}
+                    <PanahBawah
+                      className={cn(
+                        "h-3.5 w-3.5 transition-transform duration-200",
+                        layananTerbuka && "rotate-180",
+                      )}
+                    />
+                  </button>
+
+                  {layananTerbuka && (
+                    <div
+                      id="dropdown-layanan"
+                      className={`absolute top-[calc(100%+48px)] left-1/2 z-50 ${lebarDropdown} -translate-x-1/2 overflow-hidden rounded-2xl border border-garis bg-white shadow-[0_18px_45px_color-mix(in_srgb,var(--color-brand-navy)_16%,transparent)]`}
+                    >
+                      <ul className={`grid grid-cols-1 gap-x-5 gap-y-0.5 p-3.5 ${layananBeranda.length >= 4 ? "sm:grid-cols-2" : ""} ${kolomLayanan}`}>
+                        {layananBeranda.map((layanan) => (
+                          <li key={layanan.slug}>
+                            <Link
+                              href={`/layanan/${layanan.slug}`}
+                              onClick={() => setLayananTerbuka(false)}
+                              className="group flex items-center justify-start rounded-lg px-3 py-2.5 text-left no-underline transition-colors hover:bg-netral-lat"
+                            >
+                              <span className="block w-full min-w-0 text-left">
+                                <span className="block font-heading text-[0.9rem] font-bold text-navy-900">
+                                  {layanan.judul}
+                                </span>
+                                <span className="mt-0.5 block text-[0.74rem] leading-[1.3] text-teks-sekunder">
+                                  {layanan.subjudul}
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                      <Link
+                        href="/layanan"
+                        onClick={() => setLayananTerbuka(false)}
+                        className="flex items-center justify-center gap-2 border-t border-garis-halus px-5 py-3.5 font-heading text-[0.9rem] font-bold text-navy-900 no-underline transition-colors hover:bg-yellow-500/10"
+                      >
+                        Lihat Semua Layanan
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </div>
+                  )}
+                </li>
+              );
+            }
+
             return (
               <li key={item.href}>
                 <Link
@@ -121,7 +206,7 @@ export function Navbar() {
             ikonKiri={<Obrolan className="h-4 w-4" />}
             className="hidden lg:inline-flex"
           >
-            Konsultasi Gratis
+            {situs.navCtaLabel}
           </Tombol>
 
           <button
@@ -175,7 +260,7 @@ export function Navbar() {
             ikonKiri={<Obrolan className="h-5 w-5" />}
             className="w-full"
           >
-            Konsultasi Gratis
+            {situs.navCtaLabel}
           </Tombol>
         </div>
       </div>

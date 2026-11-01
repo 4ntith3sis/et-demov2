@@ -1,4 +1,4 @@
-import { Bintang, Centang, Jam, Kunci, Medali, TrenNaik } from "@/components/ikon";
+import { Centang, Jam, Kunci, Medali, TrenNaik } from "@/components/ikon";
 
 const KEUNGGULAN = [
   {
@@ -26,7 +26,6 @@ const ALASAN = [
       "Ditangani oleh tenaga ahli berlisensi yang memiliki pemahaman mendalam tentang peraturan perpajakan nasional dan internasional.",
     ikon: <Centang className="h-5 w-5" />,
     gelap: true,
-    bukti: false,
   },
   {
     judul: "Rekam Jejak Terbukti",
@@ -34,7 +33,6 @@ const ALASAN = [
       "Dipercaya ratusan klien, mulai dari individu, UMKM, hingga perusahaan besar, dengan hasil yang terukur.",
     ikon: <Medali className="h-5 w-5" />,
     gelap: false,
-    bukti: true,
   },
   {
     judul: "Strategi Pajak yang Disesuaikan",
@@ -42,16 +40,17 @@ const ALASAN = [
       "Kami menyesuaikan solusi dengan tujuan pribadi atau bisnis Anda, tanpa pendekatan satu ukuran untuk semua.",
     ikon: <TrenNaik className="h-5 w-5" />,
     gelap: false,
-    bukti: false,
   },
 ] as const;
 
 /**
- * Section "Keunggulan" setelah Hero: kolom kiri berisi headline + tiga
+ * Section "Keunggulan" setelah statistik: kolom kiri berisi headline + tiga
  * keunggulan ringkas, kolom kanan berisi tiga kartu alasan memilih
  * EasyTax (ahli pajak, rekam jejak, strategi yang disesuaikan).
  */
-export function Keunggulan() {
+export function Keunggulan({ content }: { content?: { label?: string; title?: string; description?: string; pills?: { title?: string; description?: string }[]; cards?: { title?: string; description?: string; dark?: boolean }[] } }) {
+  const pills = content?.pills?.length ? content.pills.map((item, i) => ({ judul: item.title ?? "", deskripsi: item.description ?? "", ikon: KEUNGGULAN[i % KEUNGGULAN.length].ikon })) : KEUNGGULAN;
+  const cards = content?.cards?.length ? content.cards.map((item, i) => ({ judul: item.title ?? "", deskripsi: item.description ?? "", ikon: ALASAN[i % ALASAN.length].ikon, gelap: Boolean(item.dark) })) : ALASAN;
   return (
     <section
       aria-labelledby="keunggulan-judul"
@@ -68,24 +67,22 @@ export function Keunggulan() {
             <span className="grid h-3.5 w-3.5 place-items-center">
               <TrenNaik className="h-3.5 w-3.5" />
             </span>
-            Solusi Pajak Terpercaya
+            {content?.label ?? "Solusi Pajak Terpercaya"}
           </p>
 
           <h2
             id="keunggulan-judul"
             className="relative max-w-[520px] font-heading text-[clamp(1.9rem,2.6vw,2.5rem)] leading-[1.15] font-bold tracking-[-0.04em] text-teks-gelap"
           >
-            Mengapa EasyTax?
+            {content?.title ?? "Mengapa memilih EasyTax?"}
           </h2>
 
           <p className="relative mt-4 max-w-[440px] text-[0.98rem] leading-[1.7] text-teks-sekunder">
-            Solusi perpajakan terstruktur untuk mendampingi bisnis dan individu
-            menghadapi kompleksitas pajak modern, mengelola kewajiban
-            perpajakan, serta mengambil keputusan dengan lebih percaya diri.
+            {content?.description ?? "Solusi perpajakan terstruktur untuk mendampingi bisnis dan individu menghadapi kompleksitas pajak modern, mengelola kewajiban perpajakan, serta mengambil keputusan dengan lebih percaya diri."}
           </p>
 
           <ul className="relative mt-10 grid w-full max-w-[520px] grid-cols-3 gap-3 lg:mt-auto lg:pt-10 max-sm:grid-cols-1">
-            {KEUNGGULAN.map((item) => (
+            {pills.map((item) => (
               <li
                 key={item.judul}
                 className="flex flex-col items-start gap-2.5 rounded-lg border border-garis bg-white px-4 py-4 shadow-sm"
@@ -105,7 +102,7 @@ export function Keunggulan() {
         </div>
 
         <div className="flex flex-col gap-4 lg:self-start lg:pt-16">
-          {ALASAN.map((item) => (
+          {cards.map((item) => (
             <article
               key={item.judul}
               className={
@@ -139,26 +136,6 @@ export function Keunggulan() {
                 {item.deskripsi}
               </p>
 
-              {item.bukti && (
-                <div className="mt-3.5 grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-lg bg-white px-3.5 py-2.5">
-                  <p className="text-[0.82rem] leading-[1.25] font-bold text-teks-gelap">
-                    13.000
-                    <br />
-                    Bisnis Terlayani
-                  </p>
-                  <span className="h-9 w-px bg-garis" />
-                  <div className="min-w-0">
-                    <p className="text-[0.72rem] leading-[1.2] font-semibold text-teks-sekunder">
-                      4.9/5 Kepuasan klien
-                    </p>
-                    <span className="mt-1 flex gap-0.5 text-yellow-500">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Bintang key={i} className="h-3 w-3" />
-                      ))}
-                    </span>
-                  </div>
-                </div>
-              )}
             </article>
           ))}
         </div>

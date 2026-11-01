@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 
-import { faqKontak } from "@/data/kontak";
+import type { FaqKontak } from "@/data/kontak";
 
 /**
  * FAQ halaman /kontak — mengikuti desain `FaqLayanan` di project ini
  * (heading terpusat + badge, accordion kotak dengan ikon +), memakai
  * data faqKontak.
  */
-export function FaqKontak() {
+export function FaqKontak({ faqKontak, copy }: { faqKontak: FaqKontak[]; copy?: { label?: string; title?: string; description?: string } }) {
   const [aktif, setAktif] = useState(0);
 
   return (
@@ -21,17 +21,18 @@ export function FaqKontak() {
       <div className="mx-auto w-full max-w-maks px-6 md:px-8">
         <div className="mx-auto mb-10 max-w-[680px] text-center">
           <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
-            FAQ Kontak
+            {copy?.label ?? "FAQ Kontak"}
           </span>
 
           <h2
             id="faq-kontak-judul"
             className="font-heading text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.25] font-bold text-navy-900"
           >
-            Pertanyaan yang Sering Diajukan
+            {copy?.title ?? "Pertanyaan yang Sering Diajukan"}
           </h2>
         </div>
 
+        {copy?.description && <p className="mx-auto mb-8 max-w-[680px] text-center text-teks-sekunder">{copy.description}</p>}
         <div className="mx-auto max-w-[820px]">
           {faqKontak.map((f, i) => {
             const terbuka = aktif === i;

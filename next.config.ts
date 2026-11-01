@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: { agentUpgrade: "security" },
   // Folder proyek berada beberapa level di dalam home, jadi Turbopack
   // menebak root sebagai home dan menolak membaca package-lock.json.
   // Pin root ke folder proyek ini.

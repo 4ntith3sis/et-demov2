@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { Cari, PanahKanan, TutupLingkar } from "@/components/ikon";
-import { layananBeranda } from "@/data/layanan";
+import type { LayananBeranda } from "@/data/layanan";
 
 /**
  * "Daftar Layanan yang Tersedia" — diport dari `ServiceGrid` easytax-demo:
@@ -15,7 +15,7 @@ import { layananBeranda } from "@/data/layanan";
  * bisa dicari. Pencarian berjalan di sisi klien (data layanan kecil dan
  * statis), jadi tidak perlu request ke server.
  */
-export function DaftarLayanan() {
+export function DaftarLayanan({ layananBeranda, copy }: { layananBeranda: LayananBeranda[]; copy?: { label?: string; title?: string; searchPlaceholder?: string } }) {
   const [kunci, setKunci] = useState("");
 
   const hasil = useMemo(() => {
@@ -40,14 +40,14 @@ export function DaftarLayanan() {
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex flex-col items-start gap-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
-              Daftar Layanan yang Tersedia
+              {copy?.label ?? "Daftar Layanan yang Tersedia"}
             </span>
 
             <h2
               id="daftar-layanan-judul"
               className="max-w-[700px] font-heading text-[clamp(1.7rem,3vw,2.3rem)] leading-[1.2] font-bold tracking-[-0.03em] text-navy-900 text-balance"
             >
-              Pilihan Layanan yang Disesuaikan dengan Skala Bisnis Anda
+              {copy?.title ?? "Pilihan Layanan yang Disesuaikan dengan Skala Bisnis Anda"}
             </h2>
           </div>
 
@@ -70,7 +70,7 @@ export function DaftarLayanan() {
                 type="search"
                 value={kunci}
                 onChange={(e) => setKunci(e.target.value)}
-                placeholder="Cari layanan, mis. SPT atau PKP"
+                placeholder={copy?.searchPlaceholder ?? "Cari layanan, mis. SPT atau PKP"}
                 autoComplete="off"
                 className="h-[52px] w-full rounded-md border border-garis bg-white pr-11 pl-11 text-[0.95rem] text-teks-gelap outline-none transition-[var(--transition-base)] placeholder:text-teks-redup focus:border-navy-900 [&::-webkit-search-cancel-button]:appearance-none"
               />
@@ -138,7 +138,7 @@ export function DaftarLayanan() {
               Layanan &ldquo;{kunci.trim()}&rdquo; belum ditemukan
             </p>
             <p className="max-w-[420px] text-[0.92rem] leading-[1.6] text-teks-sekunder">
-              Coba kata kunci lain seperti SPT, PKP, pembukuan, atau restitusi.
+              Coba kata kunci lain seperti SPT, PKP, atau pembukuan.
               Kalau kebutuhannya belum ada, tim kami siap menyusun solusi
               khusus.
             </p>

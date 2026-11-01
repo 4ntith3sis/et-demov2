@@ -1,11 +1,7 @@
 /* ==========================================================================
-   Tipe domain bersama yang dipakai lintas komponen (ikon, navigasi, section).
+   Tipe domain bersama.
    Sengaja dipisah dari komponen supaya components/ui tidak perlu tahu
    apa pun tentang pajak atau EasyTax.
-
-   Tipe konten (ArtikelBeranda, LayananBeranda, Testimoni, PaketLayanan, dll.)
-   hidup berdampingan dengan modul datanya di src/data/* — jangan dipindah
-   ke sini agar tidak terjadi duplikasi.
    ========================================================================== */
 
 /** Nama ikon yang tersedia di components/ikon. */
@@ -53,4 +49,43 @@ export interface JudulBagian {
 export interface ItemNavigasi {
   label: string;
   href: string;
+}
+
+/** Layanan yang ditawarkan. */
+export interface Layanan {
+  slug: string;
+  judul: string;
+  ringkasan: string;
+  ikon: NamaIkon;
+  detail?: string[];
+}
+
+/** Testimoni klien. */
+export interface Testimoni {
+  id: string;
+  nama: string;
+  jabatan: string;
+  perusahaan: string;
+  kutipan: string;
+  rating: number;
+  inisial: string;
+}
+
+/** Artikel / tulisan pajak. */
+export interface Artikel {
+  slug: string;
+  judul: string;
+  ringkasan: string;
+  kategori: string;
+  tanggal: string;
+  waktuBaca: string;
+  gambar: string;
+}
+
+/** Statistik untuk trust bar / stats. */
+export interface Statistik {
+  label: string;
+  nilai: string;
+  /** Ikon opsional di samping nilai. */
+  ikon?: NamaIkon;
 }

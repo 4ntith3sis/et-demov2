@@ -47,7 +47,7 @@ const NILAI = [
  * dengan panel fakta 2x2 di kanan. Angka di sini sengaja berbeda dari
  * section lain supaya tidak ada pengulangan statistik.
  */
-export function CeritaKami() {
+export function CeritaKami({ content }: { content?: { label?: string; title?: string; description?: string; photo?: string; facts?: { value?: string; label?: string }[]; values?: { title?: string; description?: string }[] } }) {
   return (
     <section
       id="cerita"
@@ -57,28 +57,25 @@ export function CeritaKami() {
       <div className="mx-auto grid w-full max-w-maks grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16 md:px-8">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-yellow-500/60 bg-yellow-500/12 px-5 py-2 text-[0.85rem] font-bold tracking-[0.04em] text-navy-900 uppercase">
-            Tentang Kami
+            {content?.label ?? "Tentang Kami"}
           </span>
 
           <h2
             id="cerita-judul"
             className="mt-6 max-w-[560px] font-heading text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.2] font-bold tracking-[-0.03em] text-navy-900 text-balance"
           >
-            Bos lebih fokus pada bisnis, pajak kami yang urus
+            {content?.title ?? "Bos lebih fokus pada bisnis, pajak kami yang urus"}
           </h2>
 
           <p className="mt-5 max-w-[540px] text-[1rem] leading-[1.75] text-teks-sekunder">
-            EasyTax berangkat dari satu keluhan yang sering terdengar: laporan
-            pajak dan pembukuan selalu ditunda karena tidak ada yang mengurusi.
-            Waktu dan energi Anda habis untuk pekerjaan rutin yang seharusnya
-            bisa ditangani orang lain yang fokus.
+            {content?.description ?? "EasyTax berangkat dari satu keluhan yang sering terdengar: laporan pajak dan pembukuan selalu ditunda karena tidak ada yang mengurusi. Waktu dan energi Anda habis untuk pekerjaan rutin yang seharusnya bisa ditangani orang lain yang fokus."}
           </p>
         </div>
 
         <div className="relative">
           <div className="relative h-[380px] overflow-hidden rounded-[28px] bg-netral-lat shadow-lg">
             <Image
-              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80"
+              src={content?.photo ?? "/images/hero/easytax-resmi.webp"}
               alt="Tim konsultan pajak EasyTax berdiskusi"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -87,7 +84,7 @@ export function CeritaKami() {
           </div>
 
           <ul className="mt-5 grid grid-cols-2 gap-3">
-            {FAKTA.map((f) => (
+            {(content?.facts?.length ? content.facts.map((f, i) => ({ nilai: f.value ?? "", label: f.label ?? "", ikon: FAKTA[i % FAKTA.length].ikon })) : FAKTA).map((f) => (
               <li
                 key={f.label}
                 className="flex items-center gap-3 rounded-xl border border-garis bg-white px-4 py-3.5 shadow-sm"
@@ -112,7 +109,7 @@ export function CeritaKami() {
       {/* Nilai kerja */}
       <div className="mx-auto mt-14 w-full max-w-maks px-6 md:px-8">
         <ul className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {NILAI.map((n, i) => (
+          {(content?.values?.length ? content.values.map((v) => ({ judul: v.title ?? "", isi: v.description ?? "" })) : NILAI).map((n, i) => (
             <li
               key={n.judul}
               className="group relative overflow-hidden rounded-2xl border border-garis bg-netral-lat p-7 transition-[var(--transition-base)] hover:-translate-y-1 hover:border-yellow-500/60 hover:bg-white hover:shadow-md"

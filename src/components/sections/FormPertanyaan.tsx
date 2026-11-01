@@ -3,14 +3,16 @@
 import { useState } from "react";
 
 import { Centang, Jam, Lokasi, PanahKanan } from "@/components/ikon";
-import { jamOperasional, topikKonsultasi } from "@/data/kontak";
+import type { ambilPengaturanSitus } from "@/lib/cms/content";
 
 type Status = "idle" | "mengirim" | "sukses";
 
 /* Struktur form & side-info diadaptasi dari easytax-demo (v1):
    field yang sama (nama, bisnis, email, WA, topik, pesan) tetapi dengan
    gaya visual v2 — input isi (filled), kartu putih membulat, chip ikon. */
-export function FormPertanyaan() {
+export function FormPertanyaan({ settings }: { settings: Awaited<ReturnType<typeof ambilPengaturanSitus>> }) {
+  const jamOperasional = settings.jamOperasional;
+  const topikKonsultasi = settings.topikKonsultasi;
   const [status, setStatus] = useState<Status>("idle");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,11 +39,10 @@ export function FormPertanyaan() {
               id="form-kontak-judul"
               className="font-heading text-[clamp(1.4rem,2.4vw,1.8rem)] leading-[1.25] font-bold tracking-[-0.02em] text-navy-900"
             >
-              Kirim pertanyaan Anda
+              {settings.contact?.formTitle ?? "Kirim pertanyaan Anda"}
             </h2>
             <p className="mt-2 text-[0.95rem] leading-[1.65] text-teks-sekunder">
-              Isi form berikut dan tim kami akan menghubungi Anda kembali dalam
-              1×24 jam kerja.
+              {settings.contact?.formDescription ?? "Isi form berikut dan tim kami akan menghubungi Anda kembali dalam 1×24 jam kerja."}
             </p>
 
             <hr className="my-6 border-garis-halus" />

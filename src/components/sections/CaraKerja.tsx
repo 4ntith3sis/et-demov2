@@ -17,7 +17,7 @@ const LANGKAH = [
   {
     judul: "Konsultasi",
     deskripsi:
-      "Konsultasi gratis bersama konsultan untuk memetakanudukan pajak Anda.",
+      "Konsultasi gratis bersama konsultan untuk memetakan kebutuhan pajak Anda.",
     ikon: <Obrolan className="h-5 w-5" />,
   },
   {
@@ -40,7 +40,8 @@ const LANGKAH = [
  * panah kuning di antara kartu menunjukkan alur: satu kolom → panah ke bawah,
  * dua kolom → panah antar kolom + penghubung antar baris, empat kolom → kanan.
  */
-export function CaraKerja() {
+export function CaraKerja({ content }: { content?: { label?: string; title?: string; steps?: { title?: string; description?: string }[] } }) {
+  const steps = content?.steps?.length ? content.steps.map((step, index) => ({ judul: step.title ?? "", deskripsi: step.description ?? "", ikon: LANGKAH[index % LANGKAH.length].ikon })) : LANGKAH;
   return (
     <section
       id="cara-kerja"
@@ -51,19 +52,19 @@ export function CaraKerja() {
         <div className="relative flex flex-col items-center text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 text-[0.85rem] font-bold tracking-[0.04em] text-white uppercase">
             <TrenNaik className="h-3.5 w-3.5 text-yellow-500" />
-            Cara Kerja
+            {content?.label ?? "Cara Kerja"}
           </span>
 
           <h2
             id="cara-kerja-judul"
             className="mt-6 max-w-[720px] font-heading text-[clamp(1.7rem,3vw,2.35rem)] leading-[1.2] font-bold tracking-[-0.03em] text-white"
           >
-            Empat langkah sederhana untuk menyelesaikan urusan pajak yang rumit.
+            {content?.title ?? "Empat langkah sederhana untuk menyelesaikan urusan pajak yang rumit."}
           </h2>
         </div>
 
         <ol className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-[1fr_auto_1fr] sm:gap-x-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] lg:gap-x-2">
-          {LANGKAH.map((langkah, i) => (
+          {steps.map((langkah, i) => (
             <li key={langkah.judul} className="contents">
               <div className="flex min-h-[210px] flex-col rounded-lg bg-white p-6">
                 <div className="flex items-center justify-between gap-4">
@@ -86,7 +87,7 @@ export function CaraKerja() {
                 </span>
               </div>
 
-              {i < LANGKAH.length - 1 && (
+              {i < steps.length - 1 && (
                 <span
                   aria-hidden="true"
                   className={

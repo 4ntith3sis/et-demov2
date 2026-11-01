@@ -44,6 +44,7 @@ type Prop = {
   totalPages: number;
   totalDocs: number;
   kueri?: string;
+  copy?: { listTitle?: string; searchPlaceholder?: string; searchButton?: string; allLabel?: string };
 };
 
 export function DaftarArtikel({
@@ -54,6 +55,7 @@ export function DaftarArtikel({
   totalPages,
   totalDocs,
   kueri = "",
+  copy,
 }: Prop) {
   return (
     <>
@@ -78,7 +80,7 @@ export function DaftarArtikel({
                 type="search"
                 name="q"
                 defaultValue={kueri}
-                placeholder="Cari artikel perpajakan, akuntansi, atau keuangan bisnis..."
+                placeholder={copy?.searchPlaceholder ?? "Cari artikel perpajakan, akuntansi, atau keuangan bisnis..."}
                 className="h-[52px] w-full rounded-full border-[1.5px] border-garis bg-white pr-5 pl-11 text-[0.95rem] text-navy-900 outline-none transition-[var(--transition-base)] placeholder:text-teks-redup focus:border-navy-900"
               />
             </div>
@@ -86,7 +88,7 @@ export function DaftarArtikel({
               type="submit"
               className="h-[52px] shrink-0 cursor-pointer rounded-full bg-yellow-500 px-5 text-[0.95rem] font-bold text-navy-900 shadow-kuning transition-[var(--transition-base)] hover:-translate-y-0.5 sm:px-7"
             >
-              Cari Artikel
+              {copy?.searchButton ?? "Cari Artikel"}
             </button>
           </form>
 
@@ -98,12 +100,12 @@ export function DaftarArtikel({
               href={tautanHalaman(1, undefined, kueri)}
               className={
                 kategoriAktif
-                  ? "rounded-full border border-teks-terang bg-white px-5 py-2 text-[0.95rem] font-bold text-navy-900 no-underline transition-[var(--transition-base)] hover:border-navy-900"
-                  : "rounded-full border border-navy-900 bg-navy-900 px-5 py-2 text-[0.95rem] font-bold text-white no-underline transition-[var(--transition-base)]"
+                  ? "rounded-full border border-yellow-500/70 bg-white px-5 py-2 text-[0.95rem] font-bold text-navy-900 no-underline transition-[var(--transition-base)] hover:bg-yellow-500 hover:shadow-kuning"
+                  : "rounded-full border border-yellow-500 bg-yellow-500 px-5 py-2 text-[0.95rem] font-bold text-navy-900 no-underline shadow-kuning transition-[var(--transition-base)]"
               }
               aria-current={kategoriAktif ? undefined : "page"}
             >
-              Semua Artikel
+              {copy?.allLabel ?? "Semua Artikel"}
             </Link>
 
             {kategori.map((k) => (
@@ -112,8 +114,8 @@ export function DaftarArtikel({
                 href={tautanHalaman(1, k.slug, kueri)}
                 className={
                   kategoriAktif === k.slug
-                    ? "rounded-full border border-navy-900 bg-navy-900 px-5 py-2 text-[0.95rem] font-bold text-white no-underline transition-[var(--transition-base)]"
-                    : "rounded-full border border-teks-terang bg-white px-5 py-2 text-[0.95rem] font-bold text-navy-900 no-underline transition-[var(--transition-base)] hover:border-navy-900"
+                    ? "rounded-full border border-yellow-500 bg-yellow-500 px-5 py-2 text-[0.95rem] font-bold text-navy-900 no-underline shadow-kuning transition-[var(--transition-base)]"
+                    : "rounded-full border border-yellow-500/70 bg-white px-5 py-2 text-[0.95rem] font-bold text-navy-900 no-underline transition-[var(--transition-base)] hover:bg-yellow-500 hover:shadow-kuning"
                 }
                 aria-current={kategoriAktif === k.slug ? "page" : undefined}
               >
@@ -128,14 +130,14 @@ export function DaftarArtikel({
       <section
         id="daftar-artikel"
         aria-labelledby="daftar-artikel-judul"
-        className="bg-white pt-9 pb-11 md:pb-14"
+        className="bg-white pt-10 pb-12 md:pt-12 md:pb-16"
       >
         <div className="mx-auto w-full max-w-maks px-6 md:px-8">
           <h2
             id="daftar-artikel-judul"
-            className="mb-8 font-heading text-[clamp(1.5rem,2.4vw,1.9rem)] leading-[1.2] font-bold tracking-[-0.02em] text-navy-900"
+            className="mb-7 font-heading text-[clamp(1.5rem,2.4vw,1.9rem)] leading-[1.2] font-bold tracking-[-0.02em] text-navy-900 md:mb-8"
           >
-            Artikel Terbaru
+            {copy?.listTitle ?? "Artikel Terbaru"}
           </h2>
 
           {artikel.length === 0 ? (
@@ -160,10 +162,10 @@ export function DaftarArtikel({
             </div>
           ) : (
             <>
-              <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:gap-8 lg:grid-cols-3">
                 {artikel.map((a) => (
                   <li key={a.slug}>
-                    <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-garis bg-white shadow-sm transition-[var(--transition-base)] hover:-translate-y-2 hover:shadow-xl">
+                    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-garis bg-white shadow-[0_8px_24px_color-mix(in_srgb,var(--color-brand-navy)_7%,transparent)] transition-[var(--transition-base)] hover:-translate-y-1.5 hover:shadow-[0_18px_38px_color-mix(in_srgb,var(--color-brand-navy)_14%,transparent)]">
                       <div className="relative aspect-video shrink-0 overflow-hidden bg-navy-900">
                         <Image
                           src={a.gambar}
@@ -177,7 +179,7 @@ export function DaftarArtikel({
                         </span>
                       </div>
 
-                      <div className="flex flex-1 flex-col p-[18px]">
+                      <div className="flex flex-1 flex-col p-5 md:p-6">
                         <div className="mb-2 flex items-center gap-4 text-[0.82rem] text-teks-redup">
                           <span>{a.tanggal}</span>
                           <span className="flex items-center gap-1.5">
