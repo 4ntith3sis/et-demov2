@@ -83,7 +83,7 @@ export function CeritaKami({ content }: { content?: { label?: string; title?: st
             />
           </div>
 
-          <ul className="mt-5 grid grid-cols-2 gap-3">
+          <ul className="mt-5 grid grid-cols-1 gap-3 min-[420px]:grid-cols-2">
             {(content?.facts?.length ? content.facts.map((f, i) => ({ nilai: f.value ?? "", label: f.label ?? "", ikon: FAKTA[i % FAKTA.length].ikon })) : FAKTA).map((f) => (
               <li
                 key={f.label}

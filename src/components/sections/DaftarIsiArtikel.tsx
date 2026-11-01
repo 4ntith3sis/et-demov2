@@ -74,8 +74,8 @@ export function DaftarIsiArtikel({
                 aria-current={menyala ? "true" : undefined}
                 className={
                   menyala
-                    ? "flex gap-3 rounded-lg bg-yellow-500/15 px-3 py-2 text-[0.84rem] leading-snug font-bold text-navy-900 no-underline transition-[var(--transition-base)]"
-                    : "flex gap-3 rounded-lg px-3 py-2 text-[0.84rem] leading-snug text-teks-sekunder no-underline transition-[var(--transition-base)] hover:bg-white hover:text-navy-900"
+                    ? "flex min-w-0 gap-3 rounded-lg bg-yellow-500/15 px-3 py-2 text-[0.84rem] leading-snug font-bold text-navy-900 no-underline transition-[var(--transition-base)]"
+                    : "flex min-w-0 gap-3 rounded-lg px-3 py-2 text-[0.84rem] leading-snug text-teks-sekunder no-underline transition-[var(--transition-base)] hover:bg-white hover:text-navy-900"
                 }
               >
                 <span
@@ -88,7 +88,7 @@ export function DaftarIsiArtikel({
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className={h.level > 2 ? "pl-3" : ""}>{h.text}</span>
+                <span className={`min-w-0 break-words ${h.level > 2 ? "pl-3" : ""}`}>{h.text}</span>
               </a>
             </li>
           );

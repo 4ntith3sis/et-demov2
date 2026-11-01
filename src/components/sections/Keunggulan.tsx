@@ -81,7 +81,7 @@ export function Keunggulan({ content }: { content?: { label?: string; title?: st
             {content?.description ?? "Solusi perpajakan terstruktur untuk mendampingi bisnis dan individu menghadapi kompleksitas pajak modern, mengelola kewajiban perpajakan, serta mengambil keputusan dengan lebih percaya diri."}
           </p>
 
-          <ul className="relative mt-10 grid w-full max-w-[520px] grid-cols-3 gap-3 lg:mt-auto lg:pt-10 max-sm:grid-cols-1">
+          <ul className="relative mt-10 grid w-full max-w-[520px] grid-cols-1 gap-3 min-[520px]:grid-cols-3 lg:mt-auto lg:pt-10">
             {pills.map((item) => (
               <li
                 key={item.judul}
