@@ -6,6 +6,7 @@ import { Keunggulan } from "@/components/sections/Keunggulan";
 import { Layanan } from "@/components/sections/Layanan";
 import { MediaNasional } from "@/components/sections/MediaNasional";
 import { Mitra } from "@/components/sections/Mitra";
+import { PembayaranShopee } from "@/components/sections/PembayaranShopee";
 import { Testimoni } from "@/components/sections/Testimoni";
 import { ambilArtikelPublik, ambilLayananPublik, ambilMitra, ambilTestimoni, ambilLiputanMedia, ambilPengaturanSitus } from "@/lib/cms/content";
 
@@ -29,6 +30,7 @@ export default async function HomePage() {
     <>
       <Hero settings={settings} />
       <Keunggulan content={settings.keunggulan} />
+      <PembayaranShopee />
       <Layanan layananBeranda={layanan} copy={settings.copy} />
       <CaraKerja content={settings.workflow} />
       <Artikel artikelBeranda={artikel} copy={settings.copy} />

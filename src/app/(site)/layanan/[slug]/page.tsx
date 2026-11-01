@@ -11,6 +11,7 @@ import { Keunggulan } from "@/components/sections/Keunggulan";
 import { LayananDetailHero } from "@/components/sections/LayananDetailHero";
 import { MediaNasional } from "@/components/sections/MediaNasional";
 import { Mitra } from "@/components/sections/Mitra";
+import { PembayaranShopee } from "@/components/sections/PembayaranShopee";
 import { Statistik } from "@/components/sections/Statistik";
 import { Testimoni } from "@/components/sections/Testimoni";
 import { layananBeranda } from "@/data/layanan";
@@ -69,6 +70,7 @@ async function IsiLayanan({ params }: { params: Params }) {
       <LayananDetailHero layanan={layanan} settings={settings} />
       <Statistik statistik={settings.statistics} />
       <Keunggulan content={settings.keunggulan} />
+      <PembayaranShopee />
       <HargaLayanan
         paket={detail?.paket ?? []}
         whatsappUrl={settings.whatsappUrl}

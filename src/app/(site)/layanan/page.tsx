@@ -6,6 +6,7 @@ import { Keunggulan } from "@/components/sections/Keunggulan";
 import { LayananHero } from "@/components/sections/LayananHero";
 import { MediaNasional } from "@/components/sections/MediaNasional";
 import { Mitra } from "@/components/sections/Mitra";
+import { PembayaranShopee } from "@/components/sections/PembayaranShopee";
 import { Statistik } from "@/components/sections/Statistik";
 import { Testimoni } from "@/components/sections/Testimoni";
 import { ambilLayananPublik, ambilMitra, ambilTestimoni, ambilLiputanMedia, ambilPengaturanSitus } from "@/lib/cms/content";
@@ -31,6 +32,7 @@ export default async function LayananPage() {
       <LayananHero settings={settings} />
       <Statistik statistik={settings.statistics} />
       <Keunggulan content={settings.keunggulan} />
+      <PembayaranShopee />
       <DaftarLayanan
         layananBeranda={layanan}
         copy={{
